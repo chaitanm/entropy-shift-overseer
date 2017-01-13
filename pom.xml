@@ -14,9 +14,11 @@
     <spring.version>4.3.2.RELEASE</spring.version>
     <jersey.version>2.23.2</jersey.version>
     <servlet.api.version>2.5</servlet.api.version>
+    <hibernate.version>4.3.11.Final</hibernate.version>
     <javax.rs.version>2.0.1</javax.rs.version>
     <gson.version>2.6.2</gson.version>
     <achilles.version>5.1.5</achilles.version>
+    <jose4j.version>0.5.4</jose4j.version>
     <junit.version>3.8.1</junit.version>
     <maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
     <maven.compiler.source.java.version>1.8</maven.compiler.source.java.version>
@@ -60,6 +62,12 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-tx</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
       <version>${spring.version}</version>
     </dependency>
 
@@ -118,6 +126,12 @@
     </dependency>
 
     <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>${hibernate.version}</version>
+    </dependency>
+
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${junit.version}</version>
@@ -129,6 +143,12 @@
       <artifactId>achilles-junit</artifactId>
       <version>${achilles.version}</version>
       <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bitbucket.b_c</groupId>
+      <artifactId>jose4j</artifactId>
+      <version>${jose4j.version}</version>
     </dependency>
 
   </dependencies>
