@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.entropyshift.overseer.crypto.rsa.RsaKeyInformation" table="rsa_key_information">
+        <id name="id" column="id"></id>
+        <property name="n" column="n" type="java.lang.String"/>
+        <property name="e" column="e" type="java.lang.String"/>
+        <property name="d" column="d" type="java.lang.String"/>
+        <property name="p" column="p" type="java.lang.String"/>
+        <property name="q" column="q" type="java.lang.String"/>
+        <property name="dp" column="dp" type="java.lang.String"/>
+        <property name="dq" column="dq" type="java.lang.String"/>
+        <property name="qi" column="qi" type="java.lang.String"/>
+    </class>
+</hibernate-mapping>

@@ -2,8 +2,6 @@ package com.entropyshift.overseer.crypto.jwt;
 
 import com.entropyshift.overseer.crypto.key.IAsymmetricKeyPairInformationProvider;
 import com.entropyshift.overseer.crypto.key.KeyNotFoundException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.time.Instant;
 import java.util.Map;
@@ -15,15 +13,12 @@ import java.util.TreeMap;
  */
 public class JwtAppKeyInformationProvider implements IJwtAppKeyInformationProvider
 {
-    private static NavigableMap<Long, Range> jwtAppKeyInformationLookup;
-    static
+    private NavigableMap<Long, Range> jwtAppKeyInformationLookup;
+
+    public JwtAppKeyInformationProvider(IAsymmetricKeyPairInformationProvider asymmetricKeyPairInformationProvider
+            , IJwtAppKeyMetaInformationDao jwtAppKeyMetaInformationDao)
     {
-        jwtAppKeyInformationLookup = new TreeMap<>();
-        ApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        IAsymmetricKeyPairInformationProvider asymmetricKeyPairInformationProvider =
-                (IAsymmetricKeyPairInformationProvider) appContext.getBean("asymmetricKeyPairInformationProvider");
-        IJwtAppKeyMetaInformationDao jwtAppKeyMetaInformationDao =
-                (IJwtAppKeyMetaInformationDao) appContext.getBean("jwtAppKeyMetaInformationDao");
+        this.jwtAppKeyInformationLookup = new TreeMap<>();
         populateJwtAppKeyInformationLookup(asymmetricKeyPairInformationProvider, jwtAppKeyMetaInformationDao);
     }
 
@@ -44,7 +39,7 @@ public class JwtAppKeyInformationProvider implements IJwtAppKeyInformationProvid
         return entry.getValue().val;
     }
 
-    private static void populateJwtAppKeyInformationLookup(IAsymmetricKeyPairInformationProvider asymmetricKeyPairInformationProvider
+    private void populateJwtAppKeyInformationLookup(IAsymmetricKeyPairInformationProvider asymmetricKeyPairInformationProvider
             ,IJwtAppKeyMetaInformationDao jwtAppKeyMetaInformationDao )
     {
         jwtAppKeyMetaInformationDao.getAll().forEach(jwtAppKeyMetaInformation -> {

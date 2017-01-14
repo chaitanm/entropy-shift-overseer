@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="entropy-shift-overseer:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="entropy-shift-overseer.war">
+    <root id="archive" name="entropyshift.war">
       <element id="artifact" artifact-name="entropy-shift-overseer:war exploded" />
     </root>
   </artifact>

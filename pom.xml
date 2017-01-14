@@ -154,7 +154,7 @@
   </dependencies>
 
   <build>
-    <finalName>entropy-shift-overseer</finalName>
+    <finalName>entropyshift</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

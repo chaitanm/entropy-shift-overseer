@@ -6,8 +6,6 @@ import com.entropyshift.overseer.crypto.rsa.IRsaKeyInformationDao;
 import com.entropyshift.overseer.crypto.rsa.RsaKeyInformation;
 import org.jose4j.jwk.EllipticCurveJsonWebKey;
 import org.jose4j.jwk.RsaJsonWebKey;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.security.KeyPair;
 import java.util.HashMap;
@@ -22,16 +20,15 @@ import static com.entropyshift.LambdaExceptionUtil.rethrowConsumer;
 public class AsymmetricKeyPairInformationProvider implements IAsymmetricKeyPairInformationProvider
 {
 
-    private static Map<String, AsymmetricKeyPairInformation> asymmetricKeyPairInformationMap;
+    private  Map<String, AsymmetricKeyPairInformation> asymmetricKeyPairInformationMap;
 
-    static
+    public AsymmetricKeyPairInformationProvider(IRsaKeyInformationDao rsaKeyInformationDao
+            , IEllipticalCurveKeyInformationDao ellipticalCurveKeyInformationDao)
     {
-        ApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         asymmetricKeyPairInformationMap = new HashMap<>();
-        populateEllipticalCurveKeyInformation((IEllipticalCurveKeyInformationDao) appContext.getBean("ellipticalCurveKeyInformationDao"));
-        populateRsaKeyInformation((IRsaKeyInformationDao) appContext.getBean("rsaKeyInformationDao"));
+        populateRsaKeyInformation(rsaKeyInformationDao);
+        populateEllipticalCurveKeyInformation(ellipticalCurveKeyInformationDao);
     }
-
 
     @Override
     public AsymmetricKeyPairInformation getAsymmetricKeyPairInformation(String keyPairId)
@@ -39,7 +36,7 @@ public class AsymmetricKeyPairInformationProvider implements IAsymmetricKeyPairI
         return asymmetricKeyPairInformationMap.get(keyPairId);
     }
 
-    private static void populateRsaKeyInformation(IRsaKeyInformationDao rsaKeyInformationDao)
+    private void populateRsaKeyInformation(IRsaKeyInformationDao rsaKeyInformationDao)
     {
         List<RsaKeyInformation> rsaKeyInformationList = rsaKeyInformationDao.getAll();
         rsaKeyInformationList.forEach(rethrowConsumer(rsaKeyInformation ->
@@ -52,7 +49,7 @@ public class AsymmetricKeyPairInformationProvider implements IAsymmetricKeyPairI
         }));
     }
 
-    private static void populateEllipticalCurveKeyInformation(IEllipticalCurveKeyInformationDao ellipticalCurveKeyInformationDao)
+    private void populateEllipticalCurveKeyInformation(IEllipticalCurveKeyInformationDao ellipticalCurveKeyInformationDao)
     {
         List<EllipticalCurveKeyInformation> ellipticalCurveKeyInformationList = ellipticalCurveKeyInformationDao.getAll();
         ellipticalCurveKeyInformationList.forEach(rethrowConsumer(ellipticalCurveKeyInformation ->
@@ -64,5 +61,6 @@ public class AsymmetricKeyPairInformationProvider implements IAsymmetricKeyPairI
             asymmetricKeyPairInformationMap.put(ellipticalCurveKeyInformation.getId(), asymmetricKeyPairInformation);
         }));
     }
+
 
 }

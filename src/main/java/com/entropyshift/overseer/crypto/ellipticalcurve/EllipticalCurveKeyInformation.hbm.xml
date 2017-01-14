@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.entropyshift.overseer.crypto.ellipticalcurve.EllipticalCurveKeyInformation" table="elliptical_curve_key_information">
+        <id name="id" column="id"></id>
+        <property name="x" column="x" type="java.lang.String"/>
+        <property name="y" column="y" type="java.lang.String"/>
+        <property name="d" column="d" type="java.lang.String"/>
+        <property name="curve" column="curve" type="java.lang.String"/>
+    </class>
+</hibernate-mapping>

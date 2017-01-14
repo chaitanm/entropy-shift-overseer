@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.entropyshift.overseer.crypto.jwt.JwtAppKeyMetaInformation" table="jwt_app_key_meta_information">
+        <id name="metaId" column="id"></id>
+        <property name="encryptionAndDecryptionKeyPairId" column="encryption_and_decryption_key_id" type="java.lang.String"/>
+        <property name="encryptionAndDecryptionKeyPairMethod" column="encryption_and_decryption_method" type="java.lang.String"/>
+        <property name="signatureAndVerificationKeyPairId" column="signature_and_verification_key_id" type="java.lang.String"/>
+        <property name="signatureAndVerificationKeyPairMethod" column="signature_and_verification_method" type="java.lang.String"/>
+        <property name="contentEncryptionAlgorithm" column="content_encryption_algorithm" type="java.lang.String"/>
+        <property name="startTime" column="start_time" type="java.lang.Long"/>
+        <property name="endTime" column="end_time" type="java.lang.Long"/>
+    </class>
+</hibernate-mapping>

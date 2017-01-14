@@ -1,8 +1,7 @@
 package com.entropyshift.overseer.crypto.jwt;
 
-import com.entropyshift.overseer.crypto.key.AsymmetricKeyPairInformation;
+import com.entropyshift.overseer.crypto.key.KeyNotFoundException;
 import org.jose4j.jwe.JsonWebEncryption;
-import org.jose4j.jwk.JsonWebKey;
 import org.jose4j.jws.JsonWebSignature;
 import org.jose4j.jwt.JwtClaims;
 import org.jose4j.jwt.MalformedClaimException;
@@ -11,7 +10,6 @@ import org.jose4j.jwt.consumer.JwtConsumer;
 import org.jose4j.jwt.consumer.JwtConsumerBuilder;
 import org.jose4j.lang.JoseException;
 
-import java.security.Key;
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +30,7 @@ public class JsonWebTokenProvider implements IJsonWebTokenProvider
     }
 
     @Override
-    public String generateToken(String issuer, String subject, List<String> audience, long issueTime , Map<String, Object> claims) throws JoseException
+    public String generateToken(String issuer, String subject, List<String> audience, long issueTime , Map<String, Object> claims) throws JoseException, KeyNotFoundException
     {
         JwtAppKeyInformation currentAppKeyInfo = this.jwtAppKeyInformationProvider.getCurrentJwtAppKeyInformation();
         JwtClaims jwtClaims = new JwtClaims();
@@ -58,7 +56,7 @@ public class JsonWebTokenProvider implements IJsonWebTokenProvider
     }
 
     @Override
-    public Map<String, Object> consumeToken(String token, String expectedIssuer, List<String> expectedAudience, long expiryTimeInMilliSeconds) throws InvalidJwtException, MalformedClaimException
+    public Map<String, Object> consumeToken(String token, String expectedIssuer, List<String> expectedAudience, long expiryTimeInMilliSeconds) throws InvalidJwtException, MalformedClaimException, KeyNotFoundException
     {
         JwtClaims claims;
         try

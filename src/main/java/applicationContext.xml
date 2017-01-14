@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd
+   http://www.springframework.org/schema/tx
+   http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+    <!-- needed for certain annotations like @PostConstruct -->
+    <context:annotation-config/>
+
+    <!-- Our service layer components -->
+    <context:component-scan base-package="com.entropyshift"/>
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.postgresql.Driver"></property>
+        <property name="url" value="entropyshift-overseer.c2vsa6efd3td.us-east-1.rds.amazonaws.com:5432/overseer"></property>
+        <property name="username" value="entropyshift_overseer_webapp"></property>
+        <property name="password" value="pQCeW7tyEETMrUHJRfgGBEsHGG6J9hQQr5DXwnqAJuzFxHLA"></property>
+    </bean>
+
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mappingResources">
+            <list>
+                <value>com/entropyshift/overseer/credentials/UserCredentials.hbm.xml</value>
+                <value>com/entropyshift/overseer/crypto/rsa/RsaKeyInformation.hbm.xml</value>
+                <value>com/entropyshift/overseer/crypto/ellipticalcurve/EllipticalCurveKeyInformation.hbm.xml</value>
+                <value>com/entropyshift/overseer/crypto/jwt/JwtAppKeyMetaInformation.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.connection.pool_size">3</prop>
+                <prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <bean id="template" class="org.springframework.orm.hibernate4.HibernateTemplate">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="ellipticalCurveInformationDao"
+          class="com.entropyshift.overseer.crypto.ellipticalcurve.EllipticalCurveKeyInformationDao">
+        <constructor-arg ref="template"></constructor-arg>
+    </bean>
+
+    <bean id="rsaKeyInformationDao" class="com.entropyshift.overseer.crypto.rsa.RsaKeyInformationDao">
+        <constructor-arg ref="template"></constructor-arg>
+    </bean>
+
+    <bean id="jwtAppKeyMetaInformationDao" class="com.entropyshift.overseer.crypto.jwt.JwtAppKeyMetaInformationDao">
+        <constructor-arg ref="template"></constructor-arg>
+    </bean>
+
+    <bean id="asymmetricKeyPairInformationProvider"
+          class="com.entropyshift.overseer.crypto.key.AsymmetricKeyPairInformationProvider" scope="singleton">
+        <constructor-arg ref="rsaKeyInformationDao"></constructor-arg>
+        <constructor-arg ref="ellipticalCurveInformationDao"></constructor-arg>
+    </bean>
+
+    <bean id="jwtAppKeyInformationProvider"
+          class="com.entropyshift.overseer.crypto.jwt.JwtAppKeyInformationProvider" scope="singleton">
+        <constructor-arg ref="asymmetricKeyPairInformationProvider"></constructor-arg>
+        <constructor-arg ref="jwtAppKeyMetaInformationDao"></constructor-arg>
+    </bean>
+
+    <bean id="jsonWebTokenProvider" class="com.entropyshift.overseer.crypto.jwt.JsonWebTokenProvider">
+       <constructor-arg ref="jwtAppKeyInformationProvider"></constructor-arg>
+    </bean>
+
+</beans>
+
+
+
