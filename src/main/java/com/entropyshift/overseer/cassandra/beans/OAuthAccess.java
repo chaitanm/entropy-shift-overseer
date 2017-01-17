@@ -14,7 +14,7 @@ public class OAuthAccess
 {
     @PartitionKey
     @Column("access_token_hash")
-    private String accessTokenHash;
+    private byte[] accessTokenHash;
 
     @Column("client_id")
     private UUID clientId;
@@ -34,12 +34,12 @@ public class OAuthAccess
     @Column("created_timestamp")
     private long createdTimestamp;
 
-    public String getAccessTokenHash()
+    public byte[] getAccessTokenHash()
     {
         return accessTokenHash;
     }
 
-    public void setAccessTokenHash(String accessTokenHash)
+    public void setAccessTokenHash(byte[] accessTokenHash)
     {
         this.accessTokenHash = accessTokenHash;
     }

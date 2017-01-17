@@ -1,22 +1,23 @@
 package com.entropyshift.configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Properties;
 
 /**
  * Created by chaitanya.m on 1/12/17.
  */
+
+@Configuration
 public final class PropertiesProvider
 {
-    @Autowired
-    private ApplicationContext appContext;
-
     private Properties configProp = null;
 
     private PropertiesProvider() {
-        IConfigurationPropertyDao configurationPropertyDao =  (IConfigurationPropertyDao) appContext.getBean("configurationPropertyDao");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        IConfigurationPropertyDao configurationPropertyDao =  (IConfigurationPropertyDao) applicationContext.getBean("configurationPropertyDao");
         configProp = configurationPropertyDao.getConfigurationProperties();
     }
 

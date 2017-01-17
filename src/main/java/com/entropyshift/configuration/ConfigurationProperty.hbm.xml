@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.entropyshift.configuration.ConfigurationProperty" table="configuration" >
+        <meta attribute="class-description">The class contains user credential details.</meta>
+        <id name="propertyName" column="name" type="java.lang.String" />
+        <property name="propertyValue" column="value" type="java.lang.String" />
+        <property name="createdUsername" column="created_username" type="java.lang.String" />
+        <property name="updatedUsername" column="updated_username" type="java.lang.String" />
+        <property name="createdTimestamp" column="created_timestamp" type="java.lang.Long" />
+        <property name="updatedTimestamp" column="updated_timestamp" type="java.lang.Long" />
+    </class>
+</hibernate-mapping>

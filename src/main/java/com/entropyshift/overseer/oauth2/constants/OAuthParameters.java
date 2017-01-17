@@ -7,6 +7,7 @@ public final class OAuthParameters
 {
     public static final String RESPONSE_TYPE = "response_type";
     public static final String CLIENT_ID = "client_id";
+    public static final String USER_ID = "user_id";
     public static final String REDIRECT_URI = "redirect_uri";
     public static final String SCOPE = "scope";
     public static final String STATE = "state";

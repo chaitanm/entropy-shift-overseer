@@ -16,9 +16,11 @@
     <!-- Our service layer components -->
     <context:component-scan base-package="com.entropyshift"/>
 
+    <context:spring-configured/>
+
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.postgresql.Driver"></property>
-        <property name="url" value="entropyshift-overseer.c2vsa6efd3td.us-east-1.rds.amazonaws.com:5432/overseer"></property>
+        <property name="url" value="jdbc:postgresql://entropyshift-overseer.c2vsa6efd3td.us-east-1.rds.amazonaws.com:5432/overseer"></property>
         <property name="username" value="entropyshift_overseer_webapp"></property>
         <property name="password" value="pQCeW7tyEETMrUHJRfgGBEsHGG6J9hQQr5DXwnqAJuzFxHLA"></property>
     </bean>
@@ -28,6 +30,7 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="mappingResources">
             <list>
+                <value>com/entropyshift/configuration/ConfigurationProperty.hbm.xml</value>
                 <value>com/entropyshift/overseer/credentials/UserCredentials.hbm.xml</value>
                 <value>com/entropyshift/overseer/crypto/rsa/RsaKeyInformation.hbm.xml</value>
                 <value>com/entropyshift/overseer/crypto/ellipticalcurve/EllipticalCurveKeyInformation.hbm.xml</value>
@@ -53,6 +56,10 @@
 
     <bean id="template" class="org.springframework.orm.hibernate4.HibernateTemplate">
         <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="configurationPropertyDao" class="com.entropyshift.configuration.ConfigurationPropertyDao">
+        <constructor-arg ref="template"></constructor-arg>
     </bean>
 
     <bean id="ellipticalCurveInformationDao"
@@ -82,6 +89,12 @@
 
     <bean id="jsonWebTokenProvider" class="com.entropyshift.overseer.crypto.jwt.JsonWebTokenProvider">
        <constructor-arg ref="jwtAppKeyInformationProvider"></constructor-arg>
+    </bean>
+
+    <bean id="randomTokenGenerator" class="com.entropyshift.overseer.oauth2.RandomTokenGenerator"></bean>
+
+    <bean id="oAuthAuthorizationService" class="com.entropyshift.overseer.oauth2.authorize.OAuthAuthorizationService">
+        <constructor-arg ref="randomTokenGenerator"></constructor-arg>
     </bean>
 
 </beans>

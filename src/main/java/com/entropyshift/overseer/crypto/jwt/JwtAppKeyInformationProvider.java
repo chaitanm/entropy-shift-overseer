@@ -47,7 +47,7 @@ public class JwtAppKeyInformationProvider implements IJwtAppKeyInformationProvid
                     asymmetricKeyPairInformationProvider.getAsymmetricKeyPairInformation(jwtAppKeyMetaInformation.getEncryptionAndDecryptionKeyPairId())
                     , jwtAppKeyMetaInformation.getEncryptionAndDecryptionKeyPairMethod()
                     ,asymmetricKeyPairInformationProvider.getAsymmetricKeyPairInformation(jwtAppKeyMetaInformation.getSignatureAndVerificationKeyPairId())
-                    , jwtAppKeyMetaInformation.getEncryptionAndDecryptionKeyPairMethod(), jwtAppKeyMetaInformation.getContentEncryptionAlgorithm());
+                    , jwtAppKeyMetaInformation.getSignatureAndVerificationKeyPairMethod(), jwtAppKeyMetaInformation.getContentEncryptionAlgorithm());
             jwtAppKeyInformationLookup.put(jwtAppKeyMetaInformation.getStartTime(), new Range(jwtAppKeyMetaInformation.getEndTime(), jwtAppKeyInformation));
         });
     }

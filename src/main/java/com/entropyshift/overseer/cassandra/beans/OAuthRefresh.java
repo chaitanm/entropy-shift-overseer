@@ -35,10 +35,10 @@ public class OAuthRefresh
     private long expires;
 
     @Column("issued_next_access_token_hash")
-    private String issuedNextAccessTokenHash;
+    private byte[] issuedNextAccessTokenHash;
 
     @Column("issued_next_refresh_token_hash")
-    private String issuedNextRefreshTokenHash;
+    private byte[] issuedNextRefreshTokenHash;
 
     @Column("created_timestamp")
     private long createdTimestamp;
@@ -113,22 +113,22 @@ public class OAuthRefresh
         this.expires = expires;
     }
 
-    public String getIssuedNextAccessTokenHash()
+    public byte[] getIssuedNextAccessTokenHash()
     {
         return issuedNextAccessTokenHash;
     }
 
-    public void setIssuedNextAccessTokenHash(String issuedNextAccessTokenHash)
+    public void setIssuedNextAccessTokenHash(byte[] issuedNextAccessTokenHash)
     {
         this.issuedNextAccessTokenHash = issuedNextAccessTokenHash;
     }
 
-    public String getIssuedNextRefreshTokenHash()
+    public byte[] getIssuedNextRefreshTokenHash()
     {
         return issuedNextRefreshTokenHash;
     }
 
-    public void setIssuedNextRefreshTokenHash(String issuedNextRefreshTokenHash)
+    public void setIssuedNextRefreshTokenHash(byte[] issuedNextRefreshTokenHash)
     {
         this.issuedNextRefreshTokenHash = issuedNextRefreshTokenHash;
     }

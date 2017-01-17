@@ -102,6 +102,7 @@
           <element id="library" level="project" name="Maven: org.jboss:jandex:1.1.0.Final" />
           <element id="library" level="project" name="Maven: org.ow2.asm:asm:5.0.4" />
           <element id="library" level="project" name="Maven: org.bitbucket.b_c:jose4j:0.5.4" />
+          <element id="library" level="project" name="Maven: org.postgresql:postgresql:9.4.1212" />
         </element>
       </element>
       <element id="directory" name="META-INF">

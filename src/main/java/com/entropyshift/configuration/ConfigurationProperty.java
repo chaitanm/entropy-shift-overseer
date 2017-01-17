@@ -1,7 +1,5 @@
 package com.entropyshift.configuration;
 
-import java.util.Date;
-
 /**
  * Created by chaitanya.m on 1/12/17.
  */
@@ -14,8 +12,8 @@ public class ConfigurationProperty
     private String propertyValue;
     private String createdUsername;
     private String updatedUsername;
-    private Date createdTimestamp;
-    private Date updatedTimestamp;
+    private long createdTimestamp;
+    private long updatedTimestamp;
 
     public String getPropertyName() {
         return propertyName;
@@ -49,19 +47,19 @@ public class ConfigurationProperty
         this.updatedUsername = updatedUsername;
     }
 
-    public Date getCreatedTimestamp() {
+    public long getCreatedTimestamp() {
         return createdTimestamp;
     }
 
-    public void setCreatedTimestamp(Date createdTimestamp) {
+    public void setCreatedTimestamp(long createdTimestamp) {
         this.createdTimestamp = createdTimestamp;
     }
 
-    public Date getUpdatedTimestamp() {
+    public long getUpdatedTimestamp() {
         return updatedTimestamp;
     }
 
-    public void setUpdatedTimestamp(Date updatedTimestamp) {
+    public void setUpdatedTimestamp(long updatedTimestamp) {
         this.updatedTimestamp = updatedTimestamp;
     }
 }

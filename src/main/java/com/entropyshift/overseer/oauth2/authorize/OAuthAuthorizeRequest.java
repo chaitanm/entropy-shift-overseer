@@ -1,7 +1,6 @@
 package com.entropyshift.overseer.oauth2.authorize;
 
 import com.entropyshift.annotations.AllowedRegex;
-import com.entropyshift.annotations.AllowedValues;
 import com.entropyshift.annotations.ParamName;
 import com.entropyshift.annotations.Required;
 import com.entropyshift.overseer.oauth2.OAuthRequest;
@@ -9,6 +8,7 @@ import com.entropyshift.overseer.oauth2.constants.OAuthParameters;
 import com.entropyshift.overseer.oauth2.constants.RegularExpressions;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.UUID;
 
 /**
  * Created by chaitanya.m on 1/10/17.
@@ -32,20 +32,25 @@ public class OAuthAuthorizeRequest extends OAuthRequest
     @Required
     private final String state;
 
+    @ParamName(OAuthParameters.USER_ID)
+    @Required
+    private final String userId;
 
     public OAuthAuthorizeRequest(final HttpServletRequest request)
     {
-        super(request.getParameter(OAuthParameters.CLIENT_ID));
+        super(UUID.fromString(request.getParameter(OAuthParameters.CLIENT_ID)));
+        this.userId = request.getParameter(OAuthParameters.USER_ID);
         this.responseType = request.getParameter(OAuthParameters.RESPONSE_TYPE);
         this.redirectUri = request.getParameter(OAuthParameters.REDIRECT_URI);
         this.scope = request.getParameter(OAuthParameters.SCOPE);
         this.state = request.getParameter(OAuthParameters.STATE);
     }
 
-    public OAuthAuthorizeRequest(final String responseType, final String clientId, final String redirectUri,
+    public OAuthAuthorizeRequest(final String responseType, final UUID clientId, final String userId, final String redirectUri,
                                  final String scope, final String state)
     {
         super(clientId);
+        this.userId = userId;
         this.responseType = responseType;
         this.redirectUri = redirectUri;
         this.scope = scope;
@@ -71,5 +76,10 @@ public class OAuthAuthorizeRequest extends OAuthRequest
     public String getState()
     {
         return state;
+    }
+
+    public String getUserId()
+    {
+        return userId;
     }
 }

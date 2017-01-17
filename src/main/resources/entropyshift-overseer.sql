@@ -1,3 +1,14 @@
+
+CREATE TABLE configuration(
+  name VARCHAR(200) PRIMARY KEY NOT NULL,
+  value VARCHAR (1000) NOT NULL ,
+  created_username VARCHAR (100) NOT NULL,
+  updated_username VARCHAR(100),
+  created_timestamp BIGINT,
+  updated_timestamp BIGINT
+);
+
+
 CREATE TABLE user_credentials(
   uuid UUID PRIMARY KEY NOT NULL,
   username VARCHAR(100) NOT NULL,
