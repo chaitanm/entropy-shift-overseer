@@ -1,4 +1,4 @@
-package com.entropyshift.overseer.cassandra.beans;
+package com.entropyshift.overseer.oauth2.access;
 
 import info.archinnov.achilles.annotations.Column;
 import info.archinnov.achilles.annotations.PartitionKey;
@@ -20,7 +20,7 @@ public class OAuthAccess
     private UUID clientId;
 
     @Column("user_id")
-    private UUID userId;
+    private String userId;
 
     @Column("scope")
     private String scope;
@@ -54,12 +54,12 @@ public class OAuthAccess
         this.clientId = clientId;
     }
 
-    public UUID getUserId()
+    public String getUserId()
     {
         return userId;
     }
 
-    public void setUserId(UUID userId)
+    public void setUserId(String userId)
     {
         this.userId = userId;
     }

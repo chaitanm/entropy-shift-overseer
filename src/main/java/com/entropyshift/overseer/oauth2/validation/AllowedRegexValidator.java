@@ -2,7 +2,6 @@ package com.entropyshift.overseer.oauth2.validation;
 
 import com.entropyshift.annotations.AllowedRegex;
 import com.entropyshift.annotations.ParamName;
-import com.entropyshift.annotations.Required;
 import com.entropyshift.overseer.oauth2.OAuthRequest;
 import com.entropyshift.overseer.oauth2.constants.OAuthErrorCodeDescriptors;
 import com.entropyshift.overseer.oauth2.constants.OAuthErrorCodesDescription;

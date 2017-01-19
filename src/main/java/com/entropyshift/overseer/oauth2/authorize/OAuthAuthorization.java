@@ -1,4 +1,4 @@
-package com.entropyshift.overseer.cassandra.beans;
+package com.entropyshift.overseer.oauth2.authorize;
 
 import info.archinnov.achilles.annotations.Column;
 import info.archinnov.achilles.annotations.PartitionKey;
@@ -42,6 +42,9 @@ public class OAuthAuthorization
 
     @Column("created_timestamp")
     private long createdTimestamp;
+
+    @Column("client_validated")
+    private boolean clientValidated;
 
     public byte[] getAuthorizationCodeHash()
     {
@@ -141,5 +144,15 @@ public class OAuthAuthorization
     public void setCreatedTimestamp(long createdTimestamp)
     {
         this.createdTimestamp = createdTimestamp;
+    }
+
+    public boolean isClientValidated()
+    {
+        return clientValidated;
+    }
+
+    public void setClientValidated(boolean clientValidated)
+    {
+        this.clientValidated = clientValidated;
     }
 }

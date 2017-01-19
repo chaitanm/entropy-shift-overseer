@@ -11,4 +11,5 @@ public final class OAuthParameters
     public static final String REDIRECT_URI = "redirect_uri";
     public static final String SCOPE = "scope";
     public static final String STATE = "state";
+    public static final String AUTHORIZATION_CODE = "authorization_code";
 }

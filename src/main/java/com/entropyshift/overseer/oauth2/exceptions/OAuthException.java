@@ -16,4 +16,15 @@ public class OAuthException extends Exception
         this.errorCodeDescriptor = errorCodeDescriptor;
         this.message = message;
     }
+
+    public OAuthErrorCodeDescriptors getErrorCodeDescriptor()
+    {
+        return errorCodeDescriptor;
+    }
+
+    @Override
+    public String getMessage()
+    {
+        return message;
+    }
 }

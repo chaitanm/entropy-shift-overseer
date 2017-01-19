@@ -5,7 +5,6 @@ import com.entropyshift.annotations.ParamName;
 import com.entropyshift.annotations.Required;
 import com.entropyshift.overseer.oauth2.OAuthRequest;
 import com.entropyshift.overseer.oauth2.constants.OAuthParameters;
-import com.entropyshift.overseer.oauth2.constants.RegularExpressions;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.UUID;
@@ -21,11 +20,10 @@ public class OAuthAuthorizeRequest extends OAuthRequest
     private final String responseType;
 
     @ParamName(OAuthParameters.REDIRECT_URI)
-    @AllowedRegex(RegularExpressions.UrlWithoutFragment)
     private final String redirectUri;
 
     @ParamName(OAuthParameters.SCOPE)
-    @AllowedRegex("[\\[a-ZA-Z\\]\\s]+")
+    @AllowedRegex("[\\[a-zA-Z\\]\\s]+")
     private final String scope;
 
     @ParamName(OAuthParameters.STATE)

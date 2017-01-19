@@ -16,7 +16,6 @@
     <!-- Our service layer components -->
     <context:component-scan base-package="com.entropyshift"/>
 
-    <context:spring-configured/>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.postgresql.Driver"></property>
@@ -62,6 +61,10 @@
         <constructor-arg ref="template"></constructor-arg>
     </bean>
 
+    <bean id="propertiesProvider" class="com.entropyshift.configuration.PropertiesProvider" scope="singleton">
+        <constructor-arg ref="configurationPropertyDao"></constructor-arg>
+    </bean>
+
     <bean id="ellipticalCurveInformationDao"
           class="com.entropyshift.overseer.crypto.ellipticalcurve.EllipticalCurveKeyInformationDao">
         <constructor-arg ref="template"></constructor-arg>
@@ -91,9 +94,18 @@
        <constructor-arg ref="jwtAppKeyInformationProvider"></constructor-arg>
     </bean>
 
+    <bean id="dataManagerFactoryProvider" class="com.entropyshift.cassandra.DataManagerFactoryProvider" scope="singleton">
+        <constructor-arg ref="propertiesProvider"></constructor-arg>
+    </bean>
+
+    <bean id="oAuthAuthorizationDao" class="com.entropyshift.overseer.oauth2.authorize.OAuthAuthorizationDao">
+        <constructor-arg ref="dataManagerFactoryProvider"></constructor-arg>
+    </bean>
+
     <bean id="randomTokenGenerator" class="com.entropyshift.overseer.oauth2.RandomTokenGenerator"></bean>
 
     <bean id="oAuthAuthorizationService" class="com.entropyshift.overseer.oauth2.authorize.OAuthAuthorizationService">
+        <constructor-arg ref="oAuthAuthorizationDao"></constructor-arg>
         <constructor-arg ref="randomTokenGenerator"></constructor-arg>
     </bean>
 

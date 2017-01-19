@@ -1,15 +1,12 @@
 package com.entropyshift.overseer.oauth2.authorize;
 
-import com.entropyshift.overseer.cassandra.beans.OAuthAuthorization;
 import com.entropyshift.overseer.oauth2.IRandomTokenGenerator;
 import com.entropyshift.overseer.oauth2.exceptions.OAuthException;
 import com.entropyshift.overseer.oauth2.validation.AllowedRegexValidator;
 import com.entropyshift.overseer.oauth2.validation.IOAuthValidator;
 import com.entropyshift.overseer.oauth2.validation.RequiredFieldValidator;
 import com.entropyshift.overseer.oauth2.validation.ScopeValidator;
-import info.archinnov.achilles.generated.manager.OAuthAuthorization_Manager;
 
-import javax.inject.Inject;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -25,18 +22,19 @@ import static com.entropyshift.LambdaExceptionUtil.rethrowConsumer;
 public class OAuthAuthorizationService implements IOAuthAuthorizationService
 {
     private List<IOAuthValidator<OAuthAuthorizeRequest>> validators;
+    private IOAuthAuthorizationDao oAuthAuthorizationDao;
     private IRandomTokenGenerator randomTokenGenerator;
     MessageDigest digest = MessageDigest.getInstance("SHA-256");
 
-    @Inject
-    private OAuthAuthorization_Manager oAuthAuthorizationManager;
 
-    public OAuthAuthorizationService(IRandomTokenGenerator randomTokenGenerator) throws NoSuchAlgorithmException
+    public OAuthAuthorizationService(IOAuthAuthorizationDao oAuthAuthorizationDao, IRandomTokenGenerator randomTokenGenerator)
+            throws NoSuchAlgorithmException
     {
         validators = new ArrayList<>();
         validators.add(new RequiredFieldValidator<>());
         validators.add(new AllowedRegexValidator<>());
         validators.add(new ScopeValidator<>());
+        this.oAuthAuthorizationDao = oAuthAuthorizationDao;
         this.randomTokenGenerator = randomTokenGenerator;
     }
 
@@ -53,7 +51,8 @@ public class OAuthAuthorizationService implements IOAuthAuthorizationService
         oAuthAuthorization.setUserId(request.getUserId());
         oAuthAuthorization.setClientState(request.getState());
         oAuthAuthorization.setCreatedTimestamp(Instant.now().toEpochMilli());
-        this.oAuthAuthorizationManager.crud().insert(oAuthAuthorization);
+        oAuthAuthorization.setClientValidated(false);
+        this.oAuthAuthorizationDao.insert(oAuthAuthorization);
         return new OAuthAuthorizeResult(request.getUserId(), request.getClientId(), token, request.getState()
                 , oAuthAuthorization.getCreatedTimestamp() );
     }

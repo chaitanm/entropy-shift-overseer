@@ -6,6 +6,7 @@ import com.entropyshift.overseer.oauth2.OAuthRequest;
 import com.entropyshift.overseer.oauth2.constants.OAuthErrorCodeDescriptors;
 import com.entropyshift.overseer.oauth2.constants.OAuthErrorCodesDescription;
 import com.entropyshift.overseer.oauth2.exceptions.OAuthException;
+
 import java.util.Arrays;
 
 import static com.entropyshift.LambdaExceptionUtil.rethrowConsumer;

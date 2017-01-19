@@ -1,4 +1,4 @@
-package com.entropyshift.overseer.cassandra.beans;
+package com.entropyshift.overseer.oauth2.refresh;
 
 import info.archinnov.achilles.annotations.Column;
 import info.archinnov.achilles.annotations.PartitionKey;
@@ -9,21 +9,21 @@ import java.util.UUID;
 /**
  * Created by chaitanya.m on 1/10/17.
  */
-@Table(keyspace = "entropyshift", table = "oauth_access")
+@Table(keyspace = "entropyshift", table = "oauth_refresh")
 public class OAuthRefresh
 {
     @PartitionKey
     @Column("refresh_token_hash")
-    private String refreshTokenHash;
+    private byte[] refreshTokenHash;
 
     @Column("access_token_hash")
-    private String accessTokenHash;
+    private byte[] accessTokenHash;
 
     @Column("client_id")
     private UUID clientId;
 
     @Column("user_id")
-    private UUID userId;
+    private String userId;
 
     @Column("scope")
     private String scope;
@@ -43,22 +43,22 @@ public class OAuthRefresh
     @Column("created_timestamp")
     private long createdTimestamp;
 
-    public String getRefreshTokenHash()
+    public byte[] getRefreshTokenHash()
     {
         return refreshTokenHash;
     }
 
-    public void setRefreshTokenHash(String refreshTokenHash)
+    public void setRefreshTokenHash(byte[] refreshTokenHash)
     {
         this.refreshTokenHash = refreshTokenHash;
     }
 
-    public String getAccessTokenHash()
+    public byte[] getAccessTokenHash()
     {
         return accessTokenHash;
     }
 
-    public void setAccessTokenHash(String accessTokenHash)
+    public void setAccessTokenHash(byte[] accessTokenHash)
     {
         this.accessTokenHash = accessTokenHash;
     }
@@ -73,12 +73,12 @@ public class OAuthRefresh
         this.clientId = clientId;
     }
 
-    public UUID getUserId()
+    public String getUserId()
     {
         return userId;
     }
 
-    public void setUserId(UUID userId)
+    public void setUserId(String userId)
     {
         this.userId = userId;
     }

@@ -12,8 +12,8 @@ public class ConfigurationProperty
     private String propertyValue;
     private String createdUsername;
     private String updatedUsername;
-    private long createdTimestamp;
-    private long updatedTimestamp;
+    private Long createdTimestamp;
+    private Long updatedTimestamp;
 
     public String getPropertyName() {
         return propertyName;
@@ -47,19 +47,19 @@ public class ConfigurationProperty
         this.updatedUsername = updatedUsername;
     }
 
-    public long getCreatedTimestamp() {
+    public Long getCreatedTimestamp() {
         return createdTimestamp;
     }
 
-    public void setCreatedTimestamp(long createdTimestamp) {
+    public void setCreatedTimestamp(Long createdTimestamp) {
         this.createdTimestamp = createdTimestamp;
     }
 
-    public long getUpdatedTimestamp() {
+    public Long getUpdatedTimestamp() {
         return updatedTimestamp;
     }
 
-    public void setUpdatedTimestamp(long updatedTimestamp) {
+    public void setUpdatedTimestamp(Long updatedTimestamp) {
         this.updatedTimestamp = updatedTimestamp;
     }
 }

@@ -5,6 +5,5 @@ package com.entropyshift.overseer.oauth2.constants;
  */
 public final class RegularExpressions
 {
-    public static final String UrlWithoutFragment = "(@)?(href=')?(HREF=')?(HREF=\\\")?(href=\\\")?(http://)?" +
-            "[a-zA-Z_0-9\\\\-]+(\\\\.\\\\w[a-zA-Z_0-9\\\\-]+)+(/[&\\\\n\\\\-=?\\\\+\\\\%/\\\\.\\\\w]+)?";
+
 }
