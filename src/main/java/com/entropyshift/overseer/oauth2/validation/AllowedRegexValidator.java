@@ -18,12 +18,6 @@ import static com.entropyshift.LambdaExceptionUtil.rethrowConsumer;
  */
 public class AllowedRegexValidator<T extends OAuthRequest> implements IOAuthValidator<T>
 {
-    private final OAuthErrorCodesDescription errorCodesDescription;
-
-    public AllowedRegexValidator()
-    {
-        errorCodesDescription = new OAuthErrorCodesDescription();
-    }
 
     @Override
     public void validate(T request) throws OAuthException
@@ -42,7 +36,7 @@ public class AllowedRegexValidator<T extends OAuthRequest> implements IOAuthVali
                         if (!matcher.find())
                         {
                             throw new OAuthException(OAuthErrorCodeDescriptors.INVALID_REQUEST_INVALID_PARAMETER_VALUE
-                                    , errorCodesDescription.getErrorDescription(OAuthErrorCodeDescriptors.INVALID_REQUEST_INVALID_PARAMETER_VALUE
+                                    , OAuthErrorCodesDescription.getErrorDescription(OAuthErrorCodeDescriptors.INVALID_REQUEST_INVALID_PARAMETER_VALUE
                                     , value, field.isAnnotationPresent(ParamName.class) ? field.getAnnotation(ParamName.class).value() : field.getName()));
                         }
                     }

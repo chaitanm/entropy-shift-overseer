@@ -16,13 +16,6 @@ import static com.entropyshift.LambdaExceptionUtil.rethrowConsumer;
  */
 public class RequiredFieldValidator<T extends OAuthRequest> implements IOAuthValidator
 {
-    private final OAuthErrorCodesDescription errorCodesDescription;
-
-    public RequiredFieldValidator()
-    {
-        errorCodesDescription = new OAuthErrorCodesDescription();
-    }
-
     @Override
     public void validate(OAuthRequest request) throws OAuthException
     {
@@ -33,7 +26,7 @@ public class RequiredFieldValidator<T extends OAuthRequest> implements IOAuthVal
                         Object value = field.get(request);
                         if(value == null || (value instanceof String && ((String)value).trim().equals(""))){
                             throw new OAuthException(OAuthErrorCodeDescriptors.INVALID_REQUEST_MISSING_PARAMETER
-                                    , errorCodesDescription.getErrorDescription(OAuthErrorCodeDescriptors.INVALID_REQUEST_MISSING_PARAMETER
+                                    , OAuthErrorCodesDescription.getErrorDescription(OAuthErrorCodeDescriptors.INVALID_REQUEST_MISSING_PARAMETER
                                     , field.isAnnotationPresent(ParamName.class)? field.getAnnotation(ParamName.class).value(): field.getName()));
                     }
                 }));

@@ -16,7 +16,7 @@ public interface IOAuthAuthorizationDao
 
     List<OAuthAuthorization> getByClientId(UUID clientId);
 
-    void updateClientValidatedFlag(byte[] authorizationCodeHash, boolean flag);
+    void updateUserValidatedFlag(byte[] authorizationCodeHash, boolean flag);
 
     void deleteByAuthorizationCodeHash(byte[] authorizationCodeHash);
 

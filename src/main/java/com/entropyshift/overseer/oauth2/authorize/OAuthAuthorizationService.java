@@ -51,7 +51,7 @@ public class OAuthAuthorizationService implements IOAuthAuthorizationService
         oAuthAuthorization.setUserId(request.getUserId());
         oAuthAuthorization.setClientState(request.getState());
         oAuthAuthorization.setCreatedTimestamp(Instant.now().toEpochMilli());
-        oAuthAuthorization.setClientValidated(false);
+        oAuthAuthorization.setUserValidated(false);
         this.oAuthAuthorizationDao.insert(oAuthAuthorization);
         return new OAuthAuthorizeResult(request.getUserId(), request.getClientId(), token, request.getState()
                 , oAuthAuthorization.getCreatedTimestamp() );

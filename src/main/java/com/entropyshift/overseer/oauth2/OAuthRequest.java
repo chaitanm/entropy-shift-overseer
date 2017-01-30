@@ -17,10 +17,14 @@ public abstract class OAuthRequest
     @ParamName(OAuthParameters.CLIENT_ID)
     private final UUID clientId;
 
+    @Required
+    @ParamName(OAuthParameters.USER_ID)
+    private final String userId;
 
-    public OAuthRequest(final UUID clientId)
+    public OAuthRequest(final UUID clientId, final String userId)
     {
         this.clientId = clientId;
+        this.userId = userId;
     }
 
     public UUID getClientId()
@@ -28,4 +32,8 @@ public abstract class OAuthRequest
         return clientId;
     }
 
+    public String getUserId()
+    {
+        return userId;
+    }
 }

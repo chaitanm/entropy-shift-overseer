@@ -43,8 +43,8 @@ public class OAuthAuthorization
     @Column("created_timestamp")
     private long createdTimestamp;
 
-    @Column("client_validated")
-    private boolean clientValidated;
+    @Column("user_validated")
+    private boolean userValidated;
 
     public byte[] getAuthorizationCodeHash()
     {
@@ -146,13 +146,13 @@ public class OAuthAuthorization
         this.createdTimestamp = createdTimestamp;
     }
 
-    public boolean isClientValidated()
+    public boolean isUserValidated()
     {
-        return clientValidated;
+        return userValidated;
     }
 
-    public void setClientValidated(boolean clientValidated)
+    public void setUserValidated(boolean userValidated)
     {
-        this.clientValidated = clientValidated;
+        this.userValidated = userValidated;
     }
 }

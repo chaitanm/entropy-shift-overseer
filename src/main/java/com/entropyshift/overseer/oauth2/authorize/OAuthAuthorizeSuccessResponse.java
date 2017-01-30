@@ -1,9 +1,11 @@
 package com.entropyshift.overseer.oauth2.authorize;
 
+import com.entropyshift.overseer.oauth2.OAuthSuccessResponse;
+
 /**
  * Created by chaitanya.m on 1/10/17.
  */
-public final class OAuthAuthorizeSuccessResponse extends OAuthAuthorizeResponse
+public final class OAuthAuthorizeSuccessResponse extends OAuthSuccessResponse
 {
     private final String code;
 

@@ -12,7 +12,7 @@ public final class OAuthErrorCodesDescription
 
     static
     {
-        errorDescriptionLookup = new HashMap<OAuthErrorCodeDescriptors, String>();
+        errorDescriptionLookup = new HashMap<>();
 
         errorDescriptionLookup.put(OAuthErrorCodeDescriptors.INVALID_REQUEST_INVALID_HTTP_METHOD
                 , "The request http method is invalid.");
@@ -26,6 +26,8 @@ public final class OAuthErrorCodesDescription
                 , "The request includes a parameter more than once : %s");
         errorDescriptionLookup.put(OAuthErrorCodeDescriptors.INVALID_REQUEST_INVALID_CONTENT_TYPE
                 , "The request has invalid content type");
+        errorDescriptionLookup.put(OAuthErrorCodeDescriptors.INVALID_REQUEST_INVALID_GRANT_TYPE
+                , "The request has invalid grant type");
         errorDescriptionLookup.put(OAuthErrorCodeDescriptors.UNSUPPORTED_RESPONSE_TYPE
                 , "The authorization server does not support obtaining an authorization code using this method.");
         errorDescriptionLookup.put(OAuthErrorCodeDescriptors.ACCESS_DENIED
@@ -38,10 +40,20 @@ public final class OAuthErrorCodesDescription
                 , "Service Temporarily Unavailable.");
         errorDescriptionLookup.put(OAuthErrorCodeDescriptors.SERVER_ERROR
                 , "Server Error.");
+        errorDescriptionLookup.put(OAuthErrorCodeDescriptors.AUTHORIZATION_DETAILS_NOT_AVAILABLE
+                , "Authorization details not available.");
+        errorDescriptionLookup.put(OAuthErrorCodeDescriptors.AUTHORIZATION_CODE_EXPIRED
+                , "Authorization code expired.");
+        errorDescriptionLookup.put(OAuthErrorCodeDescriptors.CLIENT_NOT_MATCHED
+                , "Client not matched.");
+        errorDescriptionLookup.put(OAuthErrorCodeDescriptors.USER_NOT_MATCHED
+                , "User not matched.");
+        errorDescriptionLookup.put(OAuthErrorCodeDescriptors.AUTHORIZATION_CODE_PRESENTED_MORE_THAN_ONCE
+                , "Authorization code presented more than once.");
 
     }
 
-    public String getErrorDescription(OAuthErrorCodeDescriptors errorCodeDescriptor, Object... args)
+    public static String getErrorDescription(OAuthErrorCodeDescriptors errorCodeDescriptor, Object... args)
     {
         return String.format(errorDescriptionLookup.get(errorCodeDescriptor), args);
     }
