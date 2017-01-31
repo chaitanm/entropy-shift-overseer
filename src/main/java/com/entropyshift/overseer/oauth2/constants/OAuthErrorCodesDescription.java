@@ -50,6 +50,12 @@ public final class OAuthErrorCodesDescription
                 , "User not matched.");
         errorDescriptionLookup.put(OAuthErrorCodeDescriptors.AUTHORIZATION_CODE_PRESENTED_MORE_THAN_ONCE
                 , "Authorization code presented more than once.");
+        errorDescriptionLookup.put(OAuthErrorCodeDescriptors.UNSUPPORTED_GRANT_TYPE
+                , "Unsupported grant type.");
+        errorDescriptionLookup.put(OAuthErrorCodeDescriptors.REDIRECT_URI_NOT_MATCHED
+                , "Redirect Uri not matched.");
+        errorDescriptionLookup.put(OAuthErrorCodeDescriptors.USER_NOT_VALIDATED
+                , "User not validated.");
 
     }
 

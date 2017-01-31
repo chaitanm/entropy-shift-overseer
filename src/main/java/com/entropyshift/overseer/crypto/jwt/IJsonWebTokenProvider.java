@@ -14,5 +14,5 @@ import java.util.Map;
 public interface IJsonWebTokenProvider
 {
     String generateToken(String issuer, String subject, List<String> audience, long issueTime,  Map<String, Object> claims) throws JoseException, KeyNotFoundException;
-    Map<String, Object> consumeToken(String token, String expectedIssuer, List<String> expectedAudience, long expiryTimeInMilliSeconds) throws InvalidJwtException, MalformedClaimException, KeyNotFoundException;
+    Map<String, Object> consumeToken(String token, String expectedIssuer, String expectedAudience, long expiryTimeInMilliSeconds) throws InvalidJwtException, MalformedClaimException, KeyNotFoundException;
 }

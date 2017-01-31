@@ -1,5 +1,6 @@
 package com.entropyshift.overseer.oauth2.access;
 
+import com.entropyshift.configuration.IPropertiesProvider;
 import com.entropyshift.overseer.oauth2.IRandomTokenGenerator;
 import com.entropyshift.overseer.oauth2.authorize.IOAuthAuthorizationDao;
 import com.entropyshift.overseer.oauth2.authorize.OAuthAuthorization;
@@ -14,6 +15,7 @@ import com.entropyshift.overseer.oauth2.validation.AllowedRegexValidator;
 import com.entropyshift.overseer.oauth2.validation.IOAuthValidator;
 import com.entropyshift.overseer.oauth2.validation.RequiredFieldValidator;
 
+import javax.ws.rs.core.UriBuilder;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -33,11 +35,12 @@ public class OAuthAccessService implements IOAuthAccessService
     private IOAuthAccessDao oAuthAccessDao;
     private IOAuthRefreshDao oAuthRefreshDao;
     private IRandomTokenGenerator randomTokenGenerator;
+    private IPropertiesProvider propertiesProvider;
 
     MessageDigest digest = MessageDigest.getInstance("SHA-256");
 
     public OAuthAccessService(IOAuthAccessDao oAuthAccessDao, IOAuthAuthorizationDao oAuthAuthorizationDao
-            , IOAuthRefreshDao oAuthRefreshDao, IRandomTokenGenerator randomTokenGenerator) throws NoSuchAlgorithmException
+            , IOAuthRefreshDao oAuthRefreshDao, IRandomTokenGenerator randomTokenGenerator, IPropertiesProvider propertiesProvider) throws NoSuchAlgorithmException
     {
         validators = new ArrayList<>();
         validators.add(new RequiredFieldValidator<>());
@@ -46,6 +49,7 @@ public class OAuthAccessService implements IOAuthAccessService
         this.oAuthAuthorizationDao = oAuthAuthorizationDao;
         this.oAuthRefreshDao = oAuthRefreshDao;
         this.randomTokenGenerator = randomTokenGenerator;
+        this.propertiesProvider = propertiesProvider;
 
     }
 
@@ -53,7 +57,8 @@ public class OAuthAccessService implements IOAuthAccessService
     public OAuthAccessResult grantAccess(final OAuthAccessRequest request) throws OAuthException
     {
         validators.forEach(rethrowConsumer(validator -> validator.validate(request)));
-        OAuthAuthorization oAuthAuthorization = oAuthAuthorizationDao.getByAuthorizationCodeHash(request.getAuthorizationCode().getBytes());
+        OAuthAuthorization oAuthAuthorization = oAuthAuthorizationDao
+                .getByAuthorizationCodeHash(digest.digest(request.getAuthorizationCode().getBytes(StandardCharsets.UTF_8)));
         oAuthAuthorizationValidation(request, oAuthAuthorization);
         long currentTimestamp = Instant.now().toEpochMilli();
 
@@ -65,16 +70,22 @@ public class OAuthAccessService implements IOAuthAccessService
         oAuthAccess.setUserId(request.getUserId());
         oAuthAccess.setClientState(oAuthAuthorization.getClientState());
         oAuthAccess.setCreatedTimestamp(currentTimestamp);
+        oAuthAccess.setScope(oAuthAuthorization.getScope());
+        oAuthAccess.setExpires(currentTimestamp + (Long.parseLong(this.propertiesProvider.getProperty("OAUTH_ACCESS_TOKEN_EXPIRES_IN_SECONDS")) * 1000));
 
         String refreshToken = this.randomTokenGenerator.generateRandomToken();
         byte[] refreshTokenHash = digest.digest(refreshToken.getBytes(StandardCharsets.UTF_8));
         OAuthRefresh oAuthRefresh = new OAuthRefresh();
         oAuthRefresh.setRefreshTokenHash(refreshTokenHash);
         oAuthRefresh.setAccessTokenHash(tokenHash);
-        oAuthAccess.setUserId(request.getUserId());
-        oAuthAccess.setClientId(request.getClientId());
-        oAuthAccess.setCreatedTimestamp(currentTimestamp);
+        oAuthRefresh.setUserId(request.getUserId());
+        oAuthRefresh.setClientId(request.getClientId());
+        oAuthRefresh.setCreatedTimestamp(currentTimestamp);
+        oAuthRefresh.setClientState(oAuthAccess.getClientState());
+        oAuthRefresh.setScope(oAuthAccess.getScope());
+        oAuthRefresh.setExpires(currentTimestamp + (Long.parseLong(this.propertiesProvider.getProperty("OAUTH_REFRESH_TOKEN_EXPIRES_IN_SECONDS")) * 1000));
 
+        oAuthAuthorization.setAccessTokenHash(tokenHash);
         oAuthAuthorization.setRefreshTokenHash(refreshTokenHash);
         this.oAuthAccessDao.insert(oAuthAccess);
         this.oAuthRefreshDao.insert(oAuthRefresh);
@@ -110,10 +121,20 @@ public class OAuthAccessService implements IOAuthAccessService
             throw new OAuthException(OAuthErrorCodeDescriptors.USER_NOT_MATCHED
                     , OAuthErrorCodesDescription.getErrorDescription(OAuthErrorCodeDescriptors.USER_NOT_MATCHED));
         }
-        else if(!request.getGrantType().equals(OAuthGrantType.AUTHORIZATION_CODE))
+        else if(!oAuthAuthorization.isUserValidated())
         {
-            throw new OAuthException(OAuthErrorCodeDescriptors.INVALID_REQUEST_INVALID_GRANT_TYPE
-            , OAuthErrorCodesDescription.getErrorDescription(OAuthErrorCodeDescriptors.INVALID_REQUEST_INVALID_GRANT_TYPE));
+            throw new OAuthException(OAuthErrorCodeDescriptors.USER_NOT_VALIDATED
+            ,OAuthErrorCodesDescription.getErrorDescription(OAuthErrorCodeDescriptors.USER_NOT_VALIDATED));
+        }
+        else if (!UriBuilder.fromUri(request.getRedirectUri()).build().getHost().equals(UriBuilder.fromUri(oAuthAuthorization.getRedirectUri()).build().getHost()))
+        {
+            throw new OAuthException(OAuthErrorCodeDescriptors.REDIRECT_URI_NOT_MATCHED
+                    , OAuthErrorCodesDescription.getErrorDescription(OAuthErrorCodeDescriptors.REDIRECT_URI_NOT_MATCHED));
+        }
+        else if (!request.getGrantType().equals(OAuthGrantType.AUTHORIZATION_CODE))
+        {
+            throw new OAuthException(OAuthErrorCodeDescriptors.UNSUPPORTED_GRANT_TYPE
+                    , OAuthErrorCodesDescription.getErrorDescription(OAuthErrorCodeDescriptors.UNSUPPORTED_GRANT_TYPE));
         }
 
     }

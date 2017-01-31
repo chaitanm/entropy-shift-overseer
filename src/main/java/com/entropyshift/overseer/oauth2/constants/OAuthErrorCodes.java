@@ -15,6 +15,8 @@ public final class OAuthErrorCodes
     public static final String INVALID_SCOPE = "invalid_scope";
     public static final String SERVER_ERROR = "server_error";
     public static final String TEMPORARILY_UNAVAILABLE = "temporarily_unavailable";
+    public static final String INVALID_GRANT = "invalid_grant";
+    public static final String UNSUPPORTED_GRANT_TYPE = "unsupported_grant_type";
 
     public static final Map<OAuthErrorCodeDescriptors, String>  errorCodeLookup;
 
@@ -33,10 +35,13 @@ public final class OAuthErrorCodes
         errorCodeLookup.put(OAuthErrorCodeDescriptors.INVALID_SCOPE, INVALID_SCOPE);
         errorCodeLookup.put(OAuthErrorCodeDescriptors.SERVER_ERROR, SERVER_ERROR);
         errorCodeLookup.put(OAuthErrorCodeDescriptors.TEMPORARILY_UNAVAILABLE, TEMPORARILY_UNAVAILABLE);
-        errorCodeLookup.put(OAuthErrorCodeDescriptors.AUTHORIZATION_DETAILS_NOT_AVAILABLE, ACCESS_DENIED);
-        errorCodeLookup.put(OAuthErrorCodeDescriptors.AUTHORIZATION_CODE_EXPIRED, ACCESS_DENIED);
-        errorCodeLookup.put(OAuthErrorCodeDescriptors.CLIENT_NOT_MATCHED, ACCESS_DENIED);
-        errorCodeLookup.put(OAuthErrorCodeDescriptors.USER_NOT_MATCHED, ACCESS_DENIED);
-        errorCodeLookup.put(OAuthErrorCodeDescriptors.AUTHORIZATION_CODE_PRESENTED_MORE_THAN_ONCE, ACCESS_DENIED);
+        errorCodeLookup.put(OAuthErrorCodeDescriptors.AUTHORIZATION_DETAILS_NOT_AVAILABLE, INVALID_GRANT);
+        errorCodeLookup.put(OAuthErrorCodeDescriptors.AUTHORIZATION_CODE_EXPIRED, INVALID_GRANT);
+        errorCodeLookup.put(OAuthErrorCodeDescriptors.CLIENT_NOT_MATCHED, INVALID_GRANT);
+        errorCodeLookup.put(OAuthErrorCodeDescriptors.USER_NOT_MATCHED, INVALID_GRANT);
+        errorCodeLookup.put(OAuthErrorCodeDescriptors.AUTHORIZATION_CODE_PRESENTED_MORE_THAN_ONCE, INVALID_GRANT);
+        errorCodeLookup.put(OAuthErrorCodeDescriptors.UNSUPPORTED_GRANT_TYPE, UNSUPPORTED_GRANT_TYPE);
+        errorCodeLookup.put(OAuthErrorCodeDescriptors.REDIRECT_URI_NOT_MATCHED, INVALID_GRANT);
+        errorCodeLookup.put(OAuthErrorCodeDescriptors.USER_NOT_VALIDATED, INVALID_GRANT);
     }
 }

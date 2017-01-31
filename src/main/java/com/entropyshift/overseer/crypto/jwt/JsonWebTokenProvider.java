@@ -30,7 +30,7 @@ public class JsonWebTokenProvider implements IJsonWebTokenProvider
     }
 
     @Override
-    public String generateToken(String issuer, String subject, List<String> audience, long issueTime , Map<String, Object> claims) throws JoseException, KeyNotFoundException
+    public String generateToken(String issuer, String subject, List<String> audience, long issueTime, Map<String, Object> claims) throws JoseException, KeyNotFoundException
     {
         JwtAppKeyInformation currentAppKeyInfo = this.jwtAppKeyInformationProvider.getCurrentJwtAppKeyInformation();
         JwtClaims jwtClaims = new JwtClaims();
@@ -56,19 +56,18 @@ public class JsonWebTokenProvider implements IJsonWebTokenProvider
     }
 
     @Override
-    public Map<String, Object> consumeToken(String token, String expectedIssuer, List<String> expectedAudience, long expiryTimeInMilliSeconds) throws InvalidJwtException, MalformedClaimException, KeyNotFoundException
+    public Map<String, Object> consumeToken(String token, String expectedIssuer, String expectedAudience, long expiryTimeInMilliSeconds) throws InvalidJwtException, MalformedClaimException, KeyNotFoundException
     {
         JwtClaims claims;
         try
         {
-            claims = consumeTokenUtil(token, this.jwtAppKeyInformationProvider.getCurrentJwtAppKeyInformation());
+            claims = consumeTokenUtil(token, this.jwtAppKeyInformationProvider.getCurrentJwtAppKeyInformation(), expectedIssuer, expectedAudience);
         }
         catch (InvalidJwtException e)
         {
-            claims = consumeTokenUtil(token, this.jwtAppKeyInformationProvider.getLastJwtAppKeyInformation());
+            claims = consumeTokenUtil(token, this.jwtAppKeyInformationProvider.getLastJwtAppKeyInformation(), expectedIssuer, expectedAudience);
         }
-        if(!claims.getIssuer().equals(expectedIssuer) || !claims.getAudience().containsAll(expectedAudience)
-                || (Instant.now().toEpochMilli() - Long.parseLong(claims.getClaimValue(tokenIssuedTime).toString()) > expiryTimeInMilliSeconds))
+        if ((Instant.now().toEpochMilli() - Long.parseLong(claims.getClaimValue(tokenIssuedTime).toString()) > expiryTimeInMilliSeconds))
         {
             throw new InvalidJwtException("Claims validation failed");
         }
@@ -76,11 +75,13 @@ public class JsonWebTokenProvider implements IJsonWebTokenProvider
 
     }
 
-    private JwtClaims consumeTokenUtil(String token, JwtAppKeyInformation jwtAppKeyInformation) throws InvalidJwtException
+    private JwtClaims consumeTokenUtil(String token, JwtAppKeyInformation jwtAppKeyInformation, String expectedIssuer, String expectedAudience) throws InvalidJwtException
     {
         JwtConsumer consumer = new JwtConsumerBuilder()
                 .setDecryptionKey(jwtAppKeyInformation.getEncryptionAndDecryptionKeyPairInfo().getKeyPair().getPrivate())
                 .setVerificationKey(jwtAppKeyInformation.getSignatureAndVerificationKeyPairInfo().getKeyPair().getPublic())
+                .setExpectedAudience(expectedAudience)
+                .setExpectedIssuer(expectedIssuer)
                 .build();
         return consumer.processToClaims(token);
     }

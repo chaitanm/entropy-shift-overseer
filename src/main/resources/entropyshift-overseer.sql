@@ -54,5 +54,7 @@ CREATE TABLE jwt_app_key_meta_information(
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('CASSANDRA_HOST','ec2-54-91-32-81.compute-1.amazonaws.com','chaitanya_m', 1484833120);
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('CASSANDRA_CQL_PORT','9042','chaitanya_m', 1484833120);
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('CASSANDRA_CLUSTER_NAME','Entropy Shift','chaitanya_m', 1484833120);
-
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('OAUTH_ISSUER','Endurance','chaitanya_m', 1484833120);
+INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('OAUTH_AUTHORIZATION_CODE_EXPIRES_IN_SECONDS','60','chaitanya_m', 1484833120);
+INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('OAUTH_ACCESS_TOKEN_EXPIRES_IN_SECONDS','1200','chaitanya_m', 1484833120);
+INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('OAUTH_REFRESH_TOKEN_EXPIRES_IN_SECONDS','86400','chaitanya_m', 1484833120);

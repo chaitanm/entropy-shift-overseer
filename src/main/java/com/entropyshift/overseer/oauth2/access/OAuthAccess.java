@@ -28,6 +28,9 @@ public class OAuthAccess
     @Column("client_state")
     private String clientState;
 
+    @Column("expires")
+    private long expires;
+
     @Column("created_timestamp")
     private long createdTimestamp;
 
@@ -79,6 +82,16 @@ public class OAuthAccess
     public void setClientState(String clientState)
     {
         this.clientState = clientState;
+    }
+
+    public long getExpires()
+    {
+        return expires;
+    }
+
+    public void setExpires(long expires)
+    {
+        this.expires = expires;
     }
 
     public long getCreatedTimestamp()

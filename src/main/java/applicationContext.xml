@@ -102,12 +102,31 @@
         <constructor-arg ref="dataManagerFactoryProvider"></constructor-arg>
     </bean>
 
+    <bean id="oAuthAccessDao" class="com.entropyshift.overseer.oauth2.access.OAuthAccessDao">
+        <constructor-arg ref="dataManagerFactoryProvider"></constructor-arg>
+    </bean>
+
+    <bean id="oAuthRefreshDao" class="com.entropyshift.overseer.oauth2.refresh.OAuthRefreshDao">
+        <constructor-arg ref="dataManagerFactoryProvider"></constructor-arg>
+    </bean>
+
+
     <bean id="randomTokenGenerator" class="com.entropyshift.overseer.oauth2.RandomTokenGenerator"></bean>
 
     <bean id="oAuthAuthorizationService" class="com.entropyshift.overseer.oauth2.authorize.OAuthAuthorizationService">
         <constructor-arg ref="oAuthAuthorizationDao"></constructor-arg>
         <constructor-arg ref="randomTokenGenerator"></constructor-arg>
+        <constructor-arg ref="propertiesProvider"></constructor-arg>
     </bean>
+
+    <bean id="oAuthAccessService" class="com.entropyshift.overseer.oauth2.access.OAuthAccessService">
+        <constructor-arg ref="oAuthAccessDao"></constructor-arg>
+        <constructor-arg ref="oAuthAuthorizationDao"></constructor-arg>
+        <constructor-arg ref="oAuthRefreshDao"></constructor-arg>
+        <constructor-arg ref="randomTokenGenerator"></constructor-arg>
+        <constructor-arg ref="propertiesProvider"></constructor-arg>
+    </bean>
+
 
 </beans>
 
