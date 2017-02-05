@@ -18,7 +18,7 @@ public final class OAuthErrorCodes
     public static final String INVALID_GRANT = "invalid_grant";
     public static final String UNSUPPORTED_GRANT_TYPE = "unsupported_grant_type";
 
-    public static final Map<OAuthErrorCodeDescriptors, String>  errorCodeLookup;
+    public static final Map<OAuthErrorCodeDescriptors, String> errorCodeLookup;
 
     static
     {
@@ -43,5 +43,8 @@ public final class OAuthErrorCodes
         errorCodeLookup.put(OAuthErrorCodeDescriptors.UNSUPPORTED_GRANT_TYPE, UNSUPPORTED_GRANT_TYPE);
         errorCodeLookup.put(OAuthErrorCodeDescriptors.REDIRECT_URI_NOT_MATCHED, INVALID_GRANT);
         errorCodeLookup.put(OAuthErrorCodeDescriptors.USER_NOT_VALIDATED, INVALID_GRANT);
+        errorCodeLookup.put(OAuthErrorCodeDescriptors.OAUTH_REFRESH_DETAILS_NOT_AVAILABLE, INVALID_GRANT);
+        errorCodeLookup.put(OAuthErrorCodeDescriptors.REFRESH_TOKEN_PRESENTED_MORE_THAN_ONCE, INVALID_GRANT);
+        errorCodeLookup.put(OAuthErrorCodeDescriptors.REFRESH_TOKEN_EXPIRED, INVALID_GRANT);
     }
 }

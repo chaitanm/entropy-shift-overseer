@@ -127,6 +127,13 @@
         <constructor-arg ref="propertiesProvider"></constructor-arg>
     </bean>
 
+    <bean id="oAuthRefreshService" class="com.entropyshift.overseer.oauth2.refresh.OAuthRefreshService">
+        <constructor-arg ref="oAuthRefreshDao"></constructor-arg>
+        <constructor-arg ref="oAuthAccessDao"></constructor-arg>
+        <constructor-arg ref="randomTokenGenerator"></constructor-arg>
+        <constructor-arg ref="propertiesProvider"></constructor-arg>
+    </bean>
+
 
 </beans>
 

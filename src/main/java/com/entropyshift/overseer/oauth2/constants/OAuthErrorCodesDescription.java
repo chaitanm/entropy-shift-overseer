@@ -56,6 +56,12 @@ public final class OAuthErrorCodesDescription
                 , "Redirect Uri not matched.");
         errorDescriptionLookup.put(OAuthErrorCodeDescriptors.USER_NOT_VALIDATED
                 , "User not validated.");
+        errorDescriptionLookup.put(OAuthErrorCodeDescriptors.OAUTH_REFRESH_DETAILS_NOT_AVAILABLE
+                , "OAuth Refresh details not available.");
+        errorDescriptionLookup.put(OAuthErrorCodeDescriptors.REFRESH_TOKEN_PRESENTED_MORE_THAN_ONCE
+                , "Refresh token presented more than once.");
+        errorDescriptionLookup.put(OAuthErrorCodeDescriptors.REFRESH_TOKEN_EXPIRED
+                , "Refresh token expired");
 
     }
 

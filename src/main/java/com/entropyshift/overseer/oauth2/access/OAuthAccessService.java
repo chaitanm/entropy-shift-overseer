@@ -111,16 +111,16 @@ public class OAuthAccessService implements IOAuthAccessService
             throw new OAuthException(OAuthErrorCodeDescriptors.AUTHORIZATION_CODE_EXPIRED
                     , OAuthErrorCodesDescription.getErrorDescription(OAuthErrorCodeDescriptors.AUTHORIZATION_CODE_EXPIRED));
         }
-        else if (!request.getClientId().equals(oAuthAuthorization.getClientId()))
-        {
-            throw new OAuthException(OAuthErrorCodeDescriptors.CLIENT_NOT_MATCHED
-                    , OAuthErrorCodesDescription.getErrorDescription(OAuthErrorCodeDescriptors.CLIENT_NOT_MATCHED));
-        }
-        else if (!request.getUserId().equals(oAuthAuthorization.getUserId()))
-        {
-            throw new OAuthException(OAuthErrorCodeDescriptors.USER_NOT_MATCHED
-                    , OAuthErrorCodesDescription.getErrorDescription(OAuthErrorCodeDescriptors.USER_NOT_MATCHED));
-        }
+            else if (!request.getClientId().equals(oAuthAuthorization.getClientId()))
+            {
+                throw new OAuthException(OAuthErrorCodeDescriptors.CLIENT_NOT_MATCHED
+                        , OAuthErrorCodesDescription.getErrorDescription(OAuthErrorCodeDescriptors.CLIENT_NOT_MATCHED));
+            }
+            else if (!request.getUserId().equals(oAuthAuthorization.getUserId()))
+            {
+                throw new OAuthException(OAuthErrorCodeDescriptors.USER_NOT_MATCHED
+                        , OAuthErrorCodesDescription.getErrorDescription(OAuthErrorCodeDescriptors.USER_NOT_MATCHED));
+            }
         else if(!oAuthAuthorization.isUserValidated())
         {
             throw new OAuthException(OAuthErrorCodeDescriptors.USER_NOT_VALIDATED
