@@ -77,9 +77,17 @@ public class OAuthRefreshService implements IOAuthRefreshService
 
         oAuthRefresh.setIssuedNextAccessTokenHash(tokenHash);
         oAuthRefresh.setIssuedNextRefreshTokenHash(refreshTokenHash);
+
+        OAuthAccess currentOAuthAccessHash = this.oAuthAccessDao.getByAccessCodeHash(oAuthRefresh.getAccessTokenHash());
+        if (currentOAuthAccessHash != null)
+        {
+            this.oAuthAccessDao.deleteByAccessCodeHash(currentOAuthAccessHash.getAccessTokenHash());
+        }
+
         this.oAuthRefreshDao.insert(oAuthRefresh);
         this.oAuthAccessDao.insert(oAuthAccess);
         this.oAuthRefreshDao.insert(nextOAuthRefresh);
+
         return new OAuthRefreshResult(nextOAuthRefresh.getUserId(), nextOAuthRefresh.getClientId(), nextOAuthRefresh.getCreatedTimestamp()
                 , token, refreshToken);
 
