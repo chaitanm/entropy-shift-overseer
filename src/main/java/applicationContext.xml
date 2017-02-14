@@ -65,6 +65,18 @@
         <constructor-arg ref="configurationPropertyDao"></constructor-arg>
     </bean>
 
+    <bean id="userCredentialsDao" class="com.entropyshift.overseer.credentials.UserCredentialsDao">
+        <constructor-arg ref="template"></constructor-arg>
+    </bean>
+
+    <bean id="defaultPasswordHashGeneratorFactory" class="com.entropyshift.overseer.credentials.DefaultPasswordHashGeneratorFactory"></bean>
+
+    <bean id="credentialService" class="com.entropyshift.overseer.credentials.CredentialService">
+        <constructor-arg ref="defaultPasswordHashGeneratorFactory"></constructor-arg>
+        <constructor-arg ref="userCredentialsDao"></constructor-arg>
+        <constructor-arg ref="propertiesProvider"></constructor-arg>
+    </bean>
+
     <bean id="ellipticalCurveInformationDao"
           class="com.entropyshift.overseer.crypto.ellipticalcurve.EllipticalCurveKeyInformationDao">
         <constructor-arg ref="template"></constructor-arg>
