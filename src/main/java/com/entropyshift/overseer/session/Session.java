@@ -4,7 +4,9 @@ import info.archinnov.achilles.annotations.Column;
 import info.archinnov.achilles.annotations.PartitionKey;
 import info.archinnov.achilles.annotations.Table;
 
-@Table(keyspace = "entropyshift", table = "session")
+import java.util.UUID;
+
+@Table(keyspace = "entropyshift", table = "auth_session")
 public class Session
 {
     @PartitionKey
@@ -18,10 +20,10 @@ public class Session
     private String ipAddress;
 
     @Column("device_id")
-    private String deviceId;
+    private UUID deviceId;
 
     @Column("browser_id")
-    private String browserId;
+    private UUID browserId;
 
     @Column("scope")
     private String scope;
@@ -66,22 +68,22 @@ public class Session
         this.ipAddress = ipAddress;
     }
 
-    public String getDeviceId()
+    public UUID getDeviceId()
     {
         return deviceId;
     }
 
-    public void setDeviceId(String deviceId)
+    public void setDeviceId(UUID deviceId)
     {
         this.deviceId = deviceId;
     }
 
-    public String getBrowserId()
+    public UUID getBrowserId()
     {
         return browserId;
     }
 
-    public void setBrowserId(String browserId)
+    public void setBrowserId(UUID browserId)
     {
         this.browserId = browserId;
     }

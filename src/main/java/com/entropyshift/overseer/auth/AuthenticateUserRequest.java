@@ -5,19 +5,19 @@ package com.entropyshift.overseer.auth;
  */
 public class AuthenticateUserRequest extends AuthRequest
 {
-    private String username;
+    private String userId;
 
     private String password;
 
-    public String getUsername()
+    public String getUserId()
 
     {
-        return username;
+        return userId;
     }
 
-    public void setUsername(String username)
+    public void setUserId(String userId)
     {
-        this.username = username;
+        this.userId = userId;
     }
 
     public String getPassword()

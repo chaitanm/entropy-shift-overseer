@@ -1,6 +1,7 @@
 package com.entropyshift.cassandra;
 
 import com.datastax.driver.core.Cluster;
+import com.entropyshift.PropertyNameConstants;
 import com.entropyshift.configuration.IPropertiesProvider;
 import info.archinnov.achilles.generated.ManagerFactory;
 import info.archinnov.achilles.generated.ManagerFactoryBuilder;
@@ -15,9 +16,9 @@ public class DataManagerFactoryProvider implements IDataManagerFactoryProvider
     public DataManagerFactoryProvider(IPropertiesProvider propertiesProvider)
     {
         Cluster cluster = Cluster.builder()
-                .addContactPoints(propertiesProvider.getProperty("CASSANDRA_HOST"))
-                .withPort(Integer.parseInt(propertiesProvider.getProperty("CASSANDRA_CQL_PORT")))
-                .withClusterName(propertiesProvider.getProperty("CASSANDRA_CLUSTER_NAME"))
+                .addContactPoints(propertiesProvider.getProperty(PropertyNameConstants.CASSANDRA_HOST))
+                .withPort(Integer.parseInt(propertiesProvider.getProperty(PropertyNameConstants.CASSANDRA_CQL_PORT)))
+                .withClusterName(propertiesProvider.getProperty(PropertyNameConstants.CASSANDRA_CLUSTER_NAME))
                 .build();
         this.managerFactory = ManagerFactoryBuilder
                 .builder(cluster)

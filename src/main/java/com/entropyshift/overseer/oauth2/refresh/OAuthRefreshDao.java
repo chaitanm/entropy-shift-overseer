@@ -20,7 +20,7 @@ public class OAuthRefreshDao implements IOAuthRefreshDao
     }
 
     @Override
-    public void insert(OAuthRefresh oAuthRefresh)
+    public void insertOrUpdate(OAuthRefresh oAuthRefresh)
     {
         this.dataManagerFactoryProvider.getManagerFactory().forOAuthRefresh().crud()
                 .insert(oAuthRefresh).execute();

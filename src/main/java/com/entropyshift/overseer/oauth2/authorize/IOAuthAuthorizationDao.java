@@ -8,7 +8,7 @@ import java.util.UUID;
  */
 public interface IOAuthAuthorizationDao
 {
-    void insert(OAuthAuthorization oAuthAuthorization);
+    void insertOrUpdate(OAuthAuthorization oAuthAuthorization);
 
     OAuthAuthorization getByAuthorizationCodeHash(byte[] authorizationCodeHash);
 

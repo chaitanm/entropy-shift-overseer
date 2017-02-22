@@ -10,7 +10,7 @@ CREATE TABLE configuration(
 
 
 CREATE TABLE user_credentials(
-  uuid UUID PRIMARY KEY NOT NULL,
+  uuid CHAR(36) PRIMARY KEY NOT NULL,
   username VARCHAR(100) NOT NULL,
   password_hash bytea NOT NULL,
   password_salt bytea NOT NULL,
@@ -54,7 +54,19 @@ CREATE TABLE jwt_app_key_meta_information(
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('CASSANDRA_HOST','ec2-54-91-32-81.compute-1.amazonaws.com','chaitanya_m', 1484833120);
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('CASSANDRA_CQL_PORT','9042','chaitanya_m', 1484833120);
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('CASSANDRA_CLUSTER_NAME','Entropy Shift','chaitanya_m', 1484833120);
+INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('PASSWORD_HASH_CALCULATOR','PBKDF2','chaitanya_m', 1484833120);
+INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('PASSWORD_HASH_ALGORITHM','SHA256','chaitanya_m', 1484833120);
+INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('PASSWORD_SALT_LENGTH','64','chaitanya_m', 1484833120);
+INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('PASSWORD_HASH_ITERATION_COUNT','10000','chaitanya_m', 1484833120);
+INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('PASSWORD_HASH_DERIVED_KEY_LENGTH','256','chaitanya_m', 1484833120);
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('OAUTH_ISSUER','Endurance','chaitanya_m', 1484833120);
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('OAUTH_AUTHORIZATION_CODE_EXPIRES_IN_SECONDS','60','chaitanya_m', 1484833120);
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('OAUTH_ACCESS_TOKEN_EXPIRES_IN_SECONDS','1200','chaitanya_m', 1484833120);
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('OAUTH_REFRESH_TOKEN_EXPIRES_IN_SECONDS','86400','chaitanya_m', 1484833120);
+INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('SESSION_EXPIRES_IN_SECONDS','1200','chaitanya_m', 1484833120);
+INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('SESSION_ABSOLUTE_EXPIRES_IN_SECONDS','28800','chaitanya_m', 1484833120);
+INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('SESSION_EXTENSION_TIME_IN_SECONDS','1200','chaitanya_m', 1484833120);
+INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('SESSION_COOKIE_NAME','ES_SESSION','chaitanya_m', 1484833120);
+INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('SESSION_DEFAULT_SCOPE','*','chaitanya_m', 1484833120);
+INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('SESSION_KEY_PARAMETER_NAME','SESSION_KEY','chaitanya_m', 1484833120);
+INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('SESSION_USER_ID_PARAMETER_NAME','SESSION_USER_ID','chaitanya_m', 1484833120);

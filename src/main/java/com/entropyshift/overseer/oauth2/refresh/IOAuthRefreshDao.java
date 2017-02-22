@@ -8,7 +8,7 @@ import java.util.UUID;
  */
 public interface IOAuthRefreshDao
 {
-    void insert(OAuthRefresh oAuthRefresh);
+    void insertOrUpdate(OAuthRefresh oAuthRefresh);
 
     OAuthRefresh getByRefreshCodeHash(byte[] refreshCodeHash);
 

@@ -7,7 +7,7 @@ import java.util.List;
  */
 public interface IOAuthAccessDao
 {
-    void insert(OAuthAccess oAuthAccess);
+    void insertOrUpdate(OAuthAccess oAuthAccess);
 
     OAuthAccess getByAccessCodeHash(byte[] accessCodeHash);
 

@@ -19,7 +19,7 @@ public class OAuthAccessDao implements IOAuthAccessDao
     }
 
     @Override
-    public void insert(OAuthAccess oAuthAccess)
+    public void insertOrUpdate(OAuthAccess oAuthAccess)
     {
         this.dataManagerFactoryProvider.getManagerFactory().forOAuthAccess().crud()
                 .insert(oAuthAccess).execute();

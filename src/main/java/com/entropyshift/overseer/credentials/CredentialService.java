@@ -1,5 +1,6 @@
 package com.entropyshift.overseer.credentials;
 
+import com.entropyshift.PropertyNameConstants;
 import com.entropyshift.configuration.IPropertiesProvider;
 import com.entropyshift.overseer.credentials.exceptions.IncorrectPasswordException;
 import com.entropyshift.overseer.credentials.exceptions.NewPasswordSameAsCurrentPasswordException;
@@ -30,21 +31,23 @@ public class CredentialService implements ICredentialService
         this.passwordHashGeneratorFactory = passwordHashGeneratorFactory;
         this.userCredentialsDao = userCredentialsDao;
         this.propertiesProvider = propertiesProvider;
-        passwordKeyDerivationFunction = this.propertiesProvider.getProperty("PASSWORD_HASH_CALCULATOR");
-        passwordHashAlgorithm = this.propertiesProvider.getProperty("PASSWORD_HASH_ALGORITHM");
-        passwordSaltLength = Integer.parseInt(this.propertiesProvider.getProperty("PASSWORD_SALT_LENGTH"));
-        passwordHashIterationCount = Integer.parseInt(this.propertiesProvider.getProperty("PASSWORD_HASH_ITERATION_COUNT"));
-        passwordHashDerivedKeyLength = Integer.parseInt(this.propertiesProvider.getProperty("PASSWORD_HASH_DERIVED_KEY_LENGTH"));
+        passwordKeyDerivationFunction = this.propertiesProvider.getProperty(PropertyNameConstants.PASSWORD_HASH_CALCULATOR);
+        passwordHashAlgorithm = this.propertiesProvider.getProperty(PropertyNameConstants.PASSWORD_HASH_ALGORITHM);
+        passwordSaltLength = Integer.parseInt(this.propertiesProvider.getProperty(PropertyNameConstants.PASSWORD_SALT_LENGTH));
+        passwordHashIterationCount = Integer.parseInt(this.propertiesProvider.getProperty(PropertyNameConstants.PASSWORD_HASH_ITERATION_COUNT));
+        passwordHashDerivedKeyLength = Integer.parseInt(this.propertiesProvider.getProperty(PropertyNameConstants.PASSWORD_HASH_DERIVED_KEY_LENGTH));
     }
 
     @Override
-    public void saveNewCredentials(String username, String password) throws PasswordHashGeneratorNotFoundException
+    public UUID saveNewCredentials(String username, String password) throws PasswordHashGeneratorNotFoundException
     {
         UserCredentials userCredentials = new UserCredentials();
-        userCredentials.setUuid(UUID.randomUUID().toString());
-        userCredentials.setUsername(username);
+        UUID uuid = UUID.randomUUID();
+        userCredentials.setUuid(uuid.toString());
+        userCredentials.setUserId(username);
         this.applyPasswordPolicy(userCredentials, password);
         userCredentialsDao.insertUserCredentials(userCredentials);
+        return uuid;
     }
 
     @Override

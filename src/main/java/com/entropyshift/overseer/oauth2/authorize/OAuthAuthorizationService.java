@@ -1,5 +1,6 @@
 package com.entropyshift.overseer.oauth2.authorize;
 
+import com.entropyshift.PropertyNameConstants;
 import com.entropyshift.configuration.IPropertiesProvider;
 import com.entropyshift.overseer.oauth2.IRandomTokenGenerator;
 import com.entropyshift.overseer.oauth2.exceptions.OAuthException;
@@ -56,10 +57,10 @@ public class OAuthAuthorizationService implements IOAuthAuthorizationService
         oAuthAuthorization.setClientState(request.getState());
         oAuthAuthorization.setCreatedTimestamp(currentTimestamp);
         oAuthAuthorization.setExpires(currentTimestamp
-                + (Long.parseLong(this.propertiesProvider.getProperty("OAUTH_AUTHORIZATION_CODE_EXPIRES_IN_SECONDS")) * 1000));
+                + (Long.parseLong(this.propertiesProvider.getProperty(PropertyNameConstants.OAUTH_AUTHORIZATION_CODE_EXPIRES_IN_SECONDS)) * 1000));
         oAuthAuthorization.setUserValidated(false);
         oAuthAuthorization.setRedirectUri(request.getRedirectUri());
-        this.oAuthAuthorizationDao.insert(oAuthAuthorization);
+        this.oAuthAuthorizationDao.insertOrUpdate(oAuthAuthorization);
         return new OAuthAuthorizeResult(request.getUserId(), request.getClientId(), token, request.getState()
                 , oAuthAuthorization.getCreatedTimestamp() );
     }

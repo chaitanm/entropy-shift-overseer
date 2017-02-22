@@ -1,5 +1,6 @@
 package com.entropyshift.overseer.oauth2.access;
 
+import com.entropyshift.PropertyNameConstants;
 import com.entropyshift.configuration.IPropertiesProvider;
 import com.entropyshift.overseer.oauth2.IRandomTokenGenerator;
 import com.entropyshift.overseer.oauth2.authorize.IOAuthAuthorizationDao;
@@ -71,7 +72,7 @@ public class OAuthAccessService implements IOAuthAccessService
         oAuthAccess.setClientState(oAuthAuthorization.getClientState());
         oAuthAccess.setCreatedTimestamp(currentTimestamp);
         oAuthAccess.setScope(oAuthAuthorization.getScope());
-        oAuthAccess.setExpires(currentTimestamp + (Long.parseLong(this.propertiesProvider.getProperty("OAUTH_ACCESS_TOKEN_EXPIRES_IN_SECONDS")) * 1000));
+        oAuthAccess.setExpires(currentTimestamp + (Long.parseLong(this.propertiesProvider.getProperty(PropertyNameConstants.OAUTH_ACCESS_TOKEN_EXPIRES_IN_SECONDS)) * 1000));
 
         String refreshToken = this.randomTokenGenerator.generateRandomToken();
         byte[] refreshTokenHash = digest.digest(refreshToken.getBytes(StandardCharsets.UTF_8));
@@ -83,13 +84,13 @@ public class OAuthAccessService implements IOAuthAccessService
         oAuthRefresh.setCreatedTimestamp(currentTimestamp);
         oAuthRefresh.setClientState(oAuthAccess.getClientState());
         oAuthRefresh.setScope(oAuthAccess.getScope());
-        oAuthRefresh.setExpires(currentTimestamp + (Long.parseLong(this.propertiesProvider.getProperty("OAUTH_REFRESH_TOKEN_EXPIRES_IN_SECONDS")) * 1000));
+        oAuthRefresh.setExpires(currentTimestamp + (Long.parseLong(this.propertiesProvider.getProperty(PropertyNameConstants.OAUTH_REFRESH_TOKEN_EXPIRES_IN_SECONDS)) * 1000));
 
         oAuthAuthorization.setAccessTokenHash(tokenHash);
         oAuthAuthorization.setRefreshTokenHash(refreshTokenHash);
-        this.oAuthAccessDao.insert(oAuthAccess);
-        this.oAuthRefreshDao.insert(oAuthRefresh);
-        this.oAuthAuthorizationDao.insert(oAuthAuthorization);
+        this.oAuthAccessDao.insertOrUpdate(oAuthAccess);
+        this.oAuthRefreshDao.insertOrUpdate(oAuthRefresh);
+        this.oAuthAuthorizationDao.insertOrUpdate(oAuthAuthorization);
         return new OAuthAccessResult(oAuthAccess.getUserId(), oAuthAccess.getClientId(), token, OAuthTokenType.BEARER, currentTimestamp, refreshToken);
     }
 

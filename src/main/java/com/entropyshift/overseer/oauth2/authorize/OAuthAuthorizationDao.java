@@ -20,7 +20,7 @@ public class OAuthAuthorizationDao implements IOAuthAuthorizationDao
     }
 
     @Override
-    public void insert(OAuthAuthorization oAuthAuthorization)
+    public void insertOrUpdate(OAuthAuthorization oAuthAuthorization)
     {
        this.dataManagerFactoryProvider.getManagerFactory().forOAuthAuthorization().crud()
                .insert(oAuthAuthorization).execute();

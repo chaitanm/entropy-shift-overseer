@@ -127,6 +127,12 @@
     </dependency>
 
     <dependency>
+      <groupId>info.archinnov</groupId>
+      <artifactId>achilles-schema-generator</artifactId>
+      <version>${achilles.version}</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
       <version>${hibernate.version}</version>

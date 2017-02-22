@@ -9,7 +9,7 @@ public final class LambdaExceptionUtil {
 
     @FunctionalInterface
     public interface Consumer_WithExceptions<T, E extends Exception> {
-        void accept(T t) throws E;
+        void accept(T t) throws E, IllegalAccessException;
     }
 
     @FunctionalInterface

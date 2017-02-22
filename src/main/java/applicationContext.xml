@@ -146,6 +146,25 @@
         <constructor-arg ref="propertiesProvider"></constructor-arg>
     </bean>
 
+    <bean id="sessionDao" class="com.entropyshift.overseer.session.SessionDao">
+        <constructor-arg ref="dataManagerFactoryProvider"></constructor-arg>
+    </bean>
+
+    <bean id="sessionService" class="com.entropyshift.overseer.session.SessionService">
+        <constructor-arg ref="sessionDao"></constructor-arg>
+        <constructor-arg ref="randomTokenGenerator"></constructor-arg>
+        <constructor-arg ref="propertiesProvider"></constructor-arg>
+    </bean>
+
+    <bean id="userInformationDao" class="com.entropyshift.user.profile.UserInformationDao">
+        <constructor-arg ref="dataManagerFactoryProvider"></constructor-arg>
+    </bean>
+
+    <bean id="registrationService" class="com.entropyshift.user.registration.RegistrationService">
+        <constructor-arg ref="credentialService"></constructor-arg>
+        <constructor-arg ref="userInformationDao"></constructor-arg>
+    </bean>
+
 
 </beans>
 
