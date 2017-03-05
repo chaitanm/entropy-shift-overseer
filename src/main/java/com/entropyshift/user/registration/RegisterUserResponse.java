@@ -7,16 +7,16 @@ import com.entropyshift.user.UserBaseResponse;
  */
 public class RegisterUserResponse extends UserBaseResponse
 {
-    private final int statusCode;
+    private final String status;
 
-    public RegisterUserResponse(String requestId, int statusCode)
+    public RegisterUserResponse(final String requestId, final String status)
     {
         super(requestId);
-        this.statusCode = statusCode;
+        this.status = status;
     }
 
-    public int getStatusCode()
+    public String getStatus()
     {
-        return statusCode;
+        return status;
     }
 }

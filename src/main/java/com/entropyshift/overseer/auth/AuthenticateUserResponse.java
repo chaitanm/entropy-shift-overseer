@@ -5,17 +5,17 @@ package com.entropyshift.overseer.auth;
  */
 public class AuthenticateUserResponse extends AuthResponse
 {
-    private final String statusCode;
+    private final String status;
 
-    public AuthenticateUserResponse(final String requestId, final String statusCode)
+    public AuthenticateUserResponse(final String requestId, final String status)
     {
         super(requestId);
-        this.statusCode = statusCode;
+        this.status = status;
     }
 
-    public String getStatusCode()
+    public String getStatus()
     {
-        return statusCode;
+        return status;
     }
 
 }

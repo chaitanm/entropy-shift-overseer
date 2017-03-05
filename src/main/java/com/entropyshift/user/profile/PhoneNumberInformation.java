@@ -1,6 +1,7 @@
 package com.entropyshift.user.profile;
 
 import com.entropyshift.RegexConstants;
+import com.entropyshift.user.constants.RequestValidationErrorMessages;
 import info.archinnov.achilles.annotations.Column;
 import info.archinnov.achilles.annotations.Enumerated;
 import info.archinnov.achilles.annotations.UDT;
@@ -17,15 +18,15 @@ import javax.validation.constraints.Size;
 public class PhoneNumberInformation
 {
     @Column("country_code")
-    @NotNull
-    @Size(min = 1, max = 3)
-    @Pattern(regexp = RegexConstants.NUMERIC_REGEX)
+    @NotNull(message = RequestValidationErrorMessages.PHONE_NUMBER_COUNTRY_CODE_NULL)
+    @Size(min = 1, max = 3, message = RequestValidationErrorMessages.PHONE_NUMBER_COUNTRY_CODE_INVALID_SIZE)
+    @Pattern(regexp = RegexConstants.NUMERIC_REGEX, message = RequestValidationErrorMessages.PHONE_NUMBER_COUNTRY_CODE_INVALID_REGEX)
     private String countryCode;
 
     @Column("national_identification_number")
-    @NotNull
-    @Size(min = 1, max = 16)
-    @Pattern(regexp = RegexConstants.NUMERIC_REGEX)
+    @NotNull(message = RequestValidationErrorMessages.PHONE_NUMBER_NATIONAL_IDENTIFICATION_NUMBER_NULL)
+    @Size(min = 1, max = 16, message = RequestValidationErrorMessages.PHONE_NUMBER_NATIONAL_IDENTIFICATION_NUMBER_INVALID_SIZE)
+    @Pattern(regexp = RegexConstants.NUMERIC_REGEX, message = RequestValidationErrorMessages.PHONE_NUMBER_NATIONAL_IDENTIFICATION_NUMBER_INVALID_REGEX)
     private String nationalIdentificationNumber;
 
     @Column("category")

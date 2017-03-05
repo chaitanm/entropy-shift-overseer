@@ -4,9 +4,7 @@ import com.entropyshift.overseer.credentials.ICredentialService;
 import com.entropyshift.overseer.credentials.exceptions.PasswordHashGeneratorNotFoundException;
 import com.entropyshift.user.exceptions.UserValidationException;
 import com.entropyshift.user.profile.*;
-import com.entropyshift.user.validation.AllowedRegexValidator;
 import com.entropyshift.user.validation.IUserValidator;
-import com.entropyshift.user.validation.RequiredFieldValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +28,6 @@ public class RegistrationService implements IRegistrationService
         this.credentialService = credentialService;
         this.userInformationDao = userInformationDao;
         validators = new ArrayList<>();
-        validators.add(new RequiredFieldValidator<>());
-        validators.add(new AllowedRegexValidator<>());
         validators.add(new RegistrationValidator(userInformationDao));
     }
 

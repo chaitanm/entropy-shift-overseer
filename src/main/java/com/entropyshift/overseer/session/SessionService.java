@@ -43,6 +43,7 @@ public class SessionService implements ISessionService
         byte[] sessionKeyHash = digest.digest(sessionKey.getBytes(StandardCharsets.UTF_8));
         session.setSessionKeyHash(sessionKeyHash);
         session.setUserId(userId);
+        session.setScope(scope);
         session.setIpAddress(ipAddress);
         session.setDeviceId(deviceId);
         session.setBrowserId(browserId);

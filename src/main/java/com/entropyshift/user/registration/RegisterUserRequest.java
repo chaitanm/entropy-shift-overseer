@@ -2,6 +2,7 @@ package com.entropyshift.user.registration;
 
 import com.entropyshift.RegexConstants;
 import com.entropyshift.user.UserBaseRequest;
+import com.entropyshift.user.constants.RequestValidationErrorMessages;
 import com.entropyshift.user.profile.AddressInformation;
 import com.entropyshift.user.profile.PhoneNumberInformation;
 import org.hibernate.validator.constraints.Email;
@@ -18,42 +19,41 @@ import java.util.Set;
  */
 public class RegisterUserRequest extends UserBaseRequest
 {
-    @NotNull
-    @Size(min = 6, max = 30)
-    @Pattern(regexp = RegexConstants.USER_ID_REGEX)
+    @NotNull(message = RequestValidationErrorMessages.USER_ID_NULL)
+    @Size(min = 6, max = 30, message = RequestValidationErrorMessages.USER_ID_INVALID_SIZE)
+    @Pattern(regexp = RegexConstants.USER_ID_REGEX, message = RequestValidationErrorMessages.USER_ID_INVALID_REGEX)
     private String userId;
 
-    @NotNull
-    @Size(min = 8, max = 50)
-    @Pattern(regexp = RegexConstants.PASSWORD_REGEX)
+    @NotNull(message = RequestValidationErrorMessages.PASSWORD_NULL)
+    @Size(min = 8, max = 50, message = RequestValidationErrorMessages.PASSWORD_INVALID_SIZE)
+    @Pattern(regexp = RegexConstants.PASSWORD_REGEX, message = RequestValidationErrorMessages.PASSWORD_INVALID_REGEX)
     private String password;
 
     @NotNull
     private String confirmPassword;
 
-    @NotNull
-    @Size(min = 1, max = 25)
-    @Pattern(regexp = RegexConstants.ALPHANUMERIC_REGEX)
+    @NotNull(message = RequestValidationErrorMessages.FIRST_NAME_NULL)
+    @Size(min = 1, max = 25, message = RequestValidationErrorMessages.FIRST_NAME_INVALID_SIZE)
+    @Pattern(regexp = RegexConstants.CHARACTER_REGEX, message = RequestValidationErrorMessages.FIRST_NAME_INVALID_REGEX)
     private String firstName;
 
-    @Size(max = 25)
-    @Pattern(regexp = RegexConstants.ALPHANUMERIC_REGEX)
+    @Size(max = 25, message = RequestValidationErrorMessages.MIDDLE_NAME_INVALID_SIZE)
+    @Pattern(regexp = RegexConstants.ALPHANUMERIC_REGEX, message = RequestValidationErrorMessages.MIDDLE_NAME_INVALID_REGEX)
     private String middleName;
 
-    @NotNull
-    @Size(min = 1, max = 25)
-    @Pattern(regexp = RegexConstants.ALPHANUMERIC_REGEX)
+    @NotNull(message = RequestValidationErrorMessages.LAST_NAME_NULL)
+    @Size(min = 1, max = 25, message = RequestValidationErrorMessages.LAST_NAME_INVALID_SIZE)
+    @Pattern(regexp = RegexConstants.ALPHANUMERIC_REGEX, message = RequestValidationErrorMessages.LAST_NAME_INVALID_REGEX)
     private String lastName;
 
-    @NotNull
-    @Email
+    @NotNull(message = RequestValidationErrorMessages.EMAIL_NULL)
+    @Email(message = RequestValidationErrorMessages.EMAIL_INVALID_REGEX)
     private String emailAddress;
 
-    @Past
+    @Past(message = RequestValidationErrorMessages.DOB_INVALID)
     private Date dateOfBirth;
 
     @NotNull
-    @Size
     private Set<PhoneNumberInformation> phoneNumberInformationList;
 
     private Set<AddressInformation> addressInformationList;

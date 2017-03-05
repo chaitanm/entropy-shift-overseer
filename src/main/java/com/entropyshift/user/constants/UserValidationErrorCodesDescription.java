@@ -15,10 +15,6 @@ public class UserValidationErrorCodesDescription
     {
         errorDescriptionLookup = new HashMap<>();
 
-        errorDescriptionLookup.put(UserValidationErrorCodeDescriptors.INVALID_REQUEST_MISSING_PARAMETER
-                , "The request is missing a required parameter : %s");
-        errorDescriptionLookup.put(UserValidationErrorCodeDescriptors.INVALID_REQUEST_INVALID_PARAMETER_VALUE
-                , "The request includes an invalid parameter value %s for parameter %s");
         errorDescriptionLookup.put(UserValidationErrorCodeDescriptors.USER_ID_NOT_AVAILABLE_FOR_REGISTRATION
                 , "Provided User Id is not available for registration : %s");
         errorDescriptionLookup.put(UserValidationErrorCodeDescriptors.EMAIL_ADDRESS_ALREADY_REGISTERED

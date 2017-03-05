@@ -1,6 +1,7 @@
 package com.entropyshift.user.profile;
 
 import com.entropyshift.RegexConstants;
+import com.entropyshift.user.constants.RequestValidationErrorMessages;
 import info.archinnov.achilles.annotations.Column;
 import info.archinnov.achilles.annotations.Enumerated;
 import info.archinnov.achilles.annotations.UDT;
@@ -16,16 +17,16 @@ import javax.validation.constraints.Size;
 public class AddressInformation
 {
     @Column("line1")
-    @NotNull
-    @Size(min = 3, max = 100)
+    @NotNull(message = RequestValidationErrorMessages.ADDRESS_LINE1_NULL)
+    @Size(max = 100, message = RequestValidationErrorMessages.ADDRESS_LINE_INVALID_SIZE)
     private String line1;
 
     @Column("line2")
-    @Size(min = 3, max = 100)
+    @Size(max = 100, message = RequestValidationErrorMessages.ADDRESS_LINE_INVALID_SIZE)
     private String line2;
 
     @Column("line3")
-    @Size(min = 3, max = 100)
+    @Size(max = 100, message = RequestValidationErrorMessages.ADDRESS_LINE_INVALID_SIZE)
     private String line3;
 
     @Column("postal")
@@ -35,25 +36,25 @@ public class AddressInformation
     private String province;
 
     @Column("city")
-    @NotNull
-    @Size(max = 100)
-    @Pattern(regexp = RegexConstants.CHARACTER_REGEX)
+    @NotNull(message = RequestValidationErrorMessages.CITY_NULL)
+    @Size(max = 100, message = RequestValidationErrorMessages.CITY_INVALID_SIZE)
+    @Pattern(regexp = RegexConstants.CHARACTER_REGEX, message = RequestValidationErrorMessages.CITY_INVALID_REGEX)
     private String city;
 
     @Column("state")
-    @NotNull
-    @Size(max = 100)
-    @Pattern(regexp = RegexConstants.CHARACTER_REGEX)
+    @NotNull(message = RequestValidationErrorMessages.STATE_NULL)
+    @Size(max = 100, message = RequestValidationErrorMessages.STATE_INVALID_SIZE)
+    @Pattern(regexp = RegexConstants.CHARACTER_REGEX, message = RequestValidationErrorMessages.STATE_INVALID_REGEX)
     private String state;
 
     @Column("country")
-    @NotNull
-    @Size(max = 100)
-    @Pattern(regexp = RegexConstants.CHARACTER_REGEX)
+    @NotNull(message = RequestValidationErrorMessages.COUNTRY_NULL)
+    @Size(max = 100, message = RequestValidationErrorMessages.COUNTRY_INVALID_SIZE)
+    @Pattern(regexp = RegexConstants.CHARACTER_REGEX, message = RequestValidationErrorMessages.COUNTRY_INVALID_REGEX)
     private String country;
 
     @Column("zip_code")
-    @NotNull
+    @NotNull(message = RequestValidationErrorMessages.ZIP_CODE_NULL)
     private int zipCode;
 
     @Column("zip_plus4")
