@@ -18,5 +18,5 @@ phases:
       - echo build completed on `date`
 artifacts:
   files:
-    - target/entropy-shift-overseer.jar
+    - target/entropy-shift-overseer.war
   discard-paths: yes
