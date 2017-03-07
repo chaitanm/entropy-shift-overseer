@@ -1,4 +1,4 @@
-FROM java:8
+FROM index.docker.io/chaitanyameesala/entropy-shift-overseer:latest
 
 # Install maven
 RUN apt-get update
