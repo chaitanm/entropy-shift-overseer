@@ -1,0 +1,26 @@
+version: 0.1
+
+environment_variables:
+  plaintext:
+    AUTHOR: "CHAITANYA_MEESALA"
+
+phases:
+  install:
+    commands:
+      - apt-get update -y
+      - apt-get install -y maven
+  pre_build:
+    commands:
+      - echo Pre-build started on `date`
+      - echo Nothing to do on Pre-build phase as of now.
+  build:
+    commands:
+      - echo build started on `date`
+      - mvn install
+  post_build:
+    commands:
+      - echo build completed on `date`
+artifacts:
+  files:
+    - target/entropyshift-overseer.jar
+  discard-paths: yes
