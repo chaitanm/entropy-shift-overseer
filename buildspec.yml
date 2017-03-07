@@ -5,10 +5,6 @@ environment_variables:
     AUTHOR: "CHAITANYA_MEESALA"
 
 phases:
-  install:
-    commands:
-      - apt-get update -y
-      - apt-get install -y maven
   pre_build:
     commands:
       - echo Pre-build started on `date`
@@ -22,5 +18,5 @@ phases:
       - echo build completed on `date`
 artifacts:
   files:
-    - target/entropyshift-overseer.jar
+    - target/entropy-shift-overseer.jar
   discard-paths: yes
