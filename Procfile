@@ -1,1 +1,0 @@
-web: java -jar overseer.war -Xmms:256m

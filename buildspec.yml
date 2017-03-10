@@ -19,5 +19,5 @@ phases:
 artifacts:
   files:
     - target/overseer.war
-    - Procfile
+    - scripts/*
   discard-paths: yes

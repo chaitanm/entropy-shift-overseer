@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: /target/overseer.war
+    destination: /entropyshift/codedeploy/overseer
+  - source: /scripts/configure_http_port.xsl
+    destination: /entropyshift/codedeploy/overseer
+hooks:
+  ApplicationStop:
+    - location: scripts/stop_application
+      timeout: 300
+  ApplicationStart:
+    - location: scripts/start_application
+      timeout: 300
