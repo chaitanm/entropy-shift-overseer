@@ -20,4 +20,5 @@ artifacts:
   files:
     - target/overseer.war
     - scripts/*
+    - appspec.yml
   discard-paths: yes
