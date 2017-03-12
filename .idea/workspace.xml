@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d83c074e-6716-4097-89c5-9bf1ef0d406e" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/before_install.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appspec.yml" afterPath="$PROJECT_DIR$/appspec.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/stop_application.sh" afterPath="$PROJECT_DIR$/scripts/stop_application.sh" />
     </list>
     <ignored path="entropy-shift-overseer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,8 +40,8 @@
       <file leaf-file-name="appspec.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/appspec.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+            <state relative-caret-position="225">
+              <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -91,25 +91,18 @@
         <entry file="file://$PROJECT_DIR$/scripts/stop_application.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" column="56" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
+              <caret line="4" column="21" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="56" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <file leaf-file-name="before_install.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/before_install.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1489346236000" expanded="true" signature="59:88561" ph="..." />
-                <marker date="1489346236000" expanded="true" signature="98:191" ph="..." />
-                <marker date="1489346236000" expanded="true" signature="86118:86160" ph="..." />
-                <marker date="1489346236000" expanded="true" signature="86118:86178" ph="..." />
-                <marker date="1489346236000" expanded="true" signature="86118:86191" ph="..." />
-                <marker date="1489346236000" expanded="true" signature="86118:86206" ph="..." />
-              </folding>
+            <state relative-caret-position="60">
+              <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -164,7 +157,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/credentials/CredentialService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/user/profile/UserStatus.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/user/UserBaseRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/user/UserBaseResponse.java" />
@@ -214,6 +206,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/rest/OAuth2Controller.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/scripts/stop_application.sh" />
+        <option value="$PROJECT_DIR$/scripts/before_install.sh" />
         <option value="$PROJECT_DIR$/appspec.yml" />
       </list>
     </option>
@@ -899,7 +892,7 @@
       <workItem from="1487043764927" duration="65324000" />
       <workItem from="1488594377711" duration="12059000" />
       <workItem from="1489122570751" duration="1640000" />
-      <workItem from="1489129409456" duration="15069000" />
+      <workItem from="1489129409456" duration="15313000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Set up">
       <created>1484027814684</created>
@@ -1104,15 +1097,22 @@
       <option name="project" value="LOCAL" />
       <updated>1489303150338</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Setting up AWS Code Deploy">
+      <created>1489346275477</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1489346275477</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="278875000" />
+    <option name="totallyTimeSpent" value="279119000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1123,7 +1123,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15670437" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21780822" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37123287" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37123287" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1248,7 +1248,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/ValidationErrorResponse.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/user/UserBaseRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1564,12 +1563,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1489346236000" expanded="true" signature="59:88561" ph="..." />
-            <marker date="1489346236000" expanded="true" signature="98:191" ph="..." />
-            <marker date="1489346236000" expanded="true" signature="86118:86160" ph="..." />
-            <marker date="1489346236000" expanded="true" signature="86118:86178" ph="..." />
-            <marker date="1489346236000" expanded="true" signature="86118:86191" ph="..." />
-            <marker date="1489346236000" expanded="true" signature="86118:86206" ph="..." />
+            <marker date="1489346810000" expanded="true" signature="59:88462" ph="..." />
+            <marker date="1489346810000" expanded="true" signature="98:191" ph="..." />
+            <marker date="1489346810000" expanded="true" signature="86019:86061" ph="..." />
+            <marker date="1489346810000" expanded="true" signature="86019:86079" ph="..." />
+            <marker date="1489346810000" expanded="true" signature="86019:86092" ph="..." />
+            <marker date="1489346810000" expanded="true" signature="86019:86107" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1578,14 +1577,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="354">
           <caret line="177" column="13" selection-start-line="177" selection-start-column="13" selection-end-line="177" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/buildspec.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -1633,15 +1624,31 @@
     <entry file="file://$PROJECT_DIR$/scripts/stop_application.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="56" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
+          <caret line="4" column="21" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/before_install.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buildspec.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/appspec.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        <state relative-caret-position="225">
+          <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
           <folding />
         </state>
       </provider>

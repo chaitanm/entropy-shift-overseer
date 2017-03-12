@@ -13,5 +13,5 @@ hooks:
     - location: sudo sh ./start_application.sh
       timeout: 300
   BeforeInstall:
-    - location: sudo rm -rf /entropyshift/codedeploy/overseer/*
+    - location: sudo sh ./before_install.sh
       timeout: 300
