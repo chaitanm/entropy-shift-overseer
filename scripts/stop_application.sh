@@ -2,4 +2,4 @@
 
 set -e
 
-sudo service tomcat8 stop
+sudo sh /opt/tomcat/apache-tomcat-8.5.11/bin/startup.sh

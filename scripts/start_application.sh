@@ -2,13 +2,13 @@
 
 set -e
 
-CATALINA_HOME='/usr/share/tomcat8'
-DEPLOY_TO_ROOT='true'
+CATALINA_HOME='/opt/tomcat/apache-tomcat-8.5.11'
+DEPLOY_TO_ROOT='false'
 CONTEXT_PATH='overseer'
-SERVER_HTTP_PORT=80
+SERVER_HTTP_PORT=8080
 CODE_DEPLOY_DIR='/entropyshift/codedeploy/overseer'
-WAR_STAGED_LOCATION='${CODE_DEPLOY_DIR}/${CONTEXT_PATH}.war'
-HTTP_PORT_CONFIG_XSL_LOCATION='$CODE_DEPLOY_DIR/configure_http_port.xsl'
+WAR_STAGED_LOCATION=${CODE_DEPLOY_DIR}/${CONTEXT_PATH}.war
+HTTP_PORT_CONFIG_XSL_LOCATION=${CODE_DEPLOY_DIR}/configure_http_port.xsl
 
 # In Tomcat, ROOT.war maps to the server root
 if [[ "$DEPLOY_TO_ROOT" = 'true' ]]; then
@@ -31,5 +31,5 @@ cp $WAR_STAGED_LOCATION $CATALINA_HOME/webapps/$CONTEXT_PATH.war
 cp $CATALINA_HOME/conf/server.xml $CATALINA_HOME/conf/server.xml.bak
 xsltproc $HTTP_PORT_CONFIG_XSL_LOCATION $CATALINA_HOME/conf/server.xml.bak > $CATALINA_HOME/conf/server.xml
 
-sudo service tomcat8 start
+sudo sh /opt/tomcat/apache-tomcat-8.5.11/bin/startup.sh
 
