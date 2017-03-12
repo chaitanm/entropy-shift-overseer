@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d83c074e-6716-4097-89c5-9bf1ef0d406e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/before_install.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appspec.yml" afterPath="$PROJECT_DIR$/appspec.yml" />
     </list>
@@ -40,8 +39,8 @@
       <file leaf-file-name="appspec.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/appspec.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
+            <state relative-caret-position="240">
+              <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -80,8 +79,8 @@
       <file leaf-file-name="start_application.sh" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/start_application.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+            <state relative-caret-position="120">
+              <caret line="8" column="51" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -101,7 +100,7 @@
         <entry file="file://$PROJECT_DIR$/scripts/before_install.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+              <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -892,7 +891,7 @@
       <workItem from="1487043764927" duration="65324000" />
       <workItem from="1488594377711" duration="12059000" />
       <workItem from="1489122570751" duration="1640000" />
-      <workItem from="1489129409456" duration="15313000" />
+      <workItem from="1489129409456" duration="15558000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Set up">
       <created>1484027814684</created>
@@ -1104,11 +1103,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489346275477</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Setting up AWS Code Deploy">
+      <created>1489346820089</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1489346820089</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="279119000" />
+    <option name="totallyTimeSpent" value="279364000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1563,12 +1569,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1489346810000" expanded="true" signature="59:88462" ph="..." />
-            <marker date="1489346810000" expanded="true" signature="98:191" ph="..." />
-            <marker date="1489346810000" expanded="true" signature="86019:86061" ph="..." />
-            <marker date="1489346810000" expanded="true" signature="86019:86079" ph="..." />
-            <marker date="1489346810000" expanded="true" signature="86019:86092" ph="..." />
-            <marker date="1489346810000" expanded="true" signature="86019:86107" ph="..." />
+            <marker date="1489347292000" expanded="true" signature="59:88666" ph="..." />
+            <marker date="1489347292000" expanded="true" signature="98:191" ph="..." />
+            <marker date="1489347292000" expanded="true" signature="86223:86265" ph="..." />
+            <marker date="1489347292000" expanded="true" signature="86223:86283" ph="..." />
+            <marker date="1489347292000" expanded="true" signature="86223:86296" ph="..." />
+            <marker date="1489347292000" expanded="true" signature="86223:86311" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1613,10 +1619,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/start_application.sh">
+    <entry file="file://$PROJECT_DIR$/buildspec.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        <state relative-caret-position="330">
+          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -1629,26 +1635,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/before_install.sh">
+    <entry file="file://$PROJECT_DIR$/scripts/start_application.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+        <state relative-caret-position="120">
+          <caret line="8" column="51" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/buildspec.yml">
+    <entry file="file://$PROJECT_DIR$/scripts/before_install.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+        <state relative-caret-position="60">
+          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/appspec.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
+        <state relative-caret-position="240">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
           <folding />
         </state>
       </provider>
