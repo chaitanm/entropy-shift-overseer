@@ -2,4 +2,4 @@
 
 set -e
 
-sudo sh /opt/tomcat/apache-tomcat-8.5.11/bin/startup.sh
+sudo sh /opt/tomcat/apache-tomcat-8.5.11/bin/shutdown.sh
