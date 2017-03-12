@@ -891,7 +891,7 @@
       <workItem from="1487043764927" duration="65324000" />
       <workItem from="1488594377711" duration="12059000" />
       <workItem from="1489122570751" duration="1640000" />
-      <workItem from="1489129409456" duration="15558000" />
+      <workItem from="1489129409456" duration="15702000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Set up">
       <created>1484027814684</created>
@@ -1110,11 +1110,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489346820089</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Setting up AWS Code Deploy">
+      <created>1489347310434</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1489347310434</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="279364000" />
+    <option name="totallyTimeSpent" value="279508000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1569,12 +1576,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1489347292000" expanded="true" signature="59:88666" ph="..." />
-            <marker date="1489347292000" expanded="true" signature="98:191" ph="..." />
-            <marker date="1489347292000" expanded="true" signature="86223:86265" ph="..." />
-            <marker date="1489347292000" expanded="true" signature="86223:86283" ph="..." />
-            <marker date="1489347292000" expanded="true" signature="86223:86296" ph="..." />
-            <marker date="1489347292000" expanded="true" signature="86223:86311" ph="..." />
+            <marker date="1489347624000" expanded="true" signature="59:88976" ph="..." />
+            <marker date="1489347624000" expanded="true" signature="98:191" ph="..." />
+            <marker date="1489347624000" expanded="true" signature="86533:86575" ph="..." />
+            <marker date="1489347624000" expanded="true" signature="86533:86593" ph="..." />
+            <marker date="1489347624000" expanded="true" signature="86533:86606" ph="..." />
+            <marker date="1489347624000" expanded="true" signature="86533:86621" ph="..." />
           </folding>
         </state>
       </provider>

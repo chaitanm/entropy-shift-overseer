@@ -7,10 +7,10 @@ files:
     destination: /entropyshift/codedeploy/overseer
 hooks:
   ApplicationStop:
-    - location: sudo sh ./stop_application.sh
+    - location: stop_application.sh
       timeout: 300
   ApplicationStart:
-    - location: sudo sh ./start_application.sh
+    - location: start_application.sh
       timeout: 300
   BeforeInstall:
     - location: before_install.sh
