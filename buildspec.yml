@@ -12,8 +12,9 @@ phases:
   build:
     commands:
       - echo build started on `date`
+      - echo `java -version`
       - echo `mvn -version`
-      - sudo mvn install
+      - mvn install
   post_build:
     commands:
       - echo build completed on `date`
