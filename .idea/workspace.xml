@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d83c074e-6716-4097-89c5-9bf1ef0d406e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appspec.yml" afterPath="$PROJECT_DIR$/appspec.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/buildspec.yml" afterPath="$PROJECT_DIR$/buildspec.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/configure_http_port.xsl" afterPath="$PROJECT_DIR$/scripts/configure_http_port.xsl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/environment_setup.sh" afterPath="$PROJECT_DIR$/scripts/environment_setup.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/start_application.sh" afterPath="$PROJECT_DIR$/scripts/start_application.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/stop_application.sh" afterPath="$PROJECT_DIR$/scripts/stop_application.sh" />
     </list>
     <ignored path="entropy-shift-overseer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,8 +29,8 @@
       <file leaf-file-name="buildspec.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/buildspec.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+            <state relative-caret-position="225">
+              <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -99,13 +94,13 @@
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <marker date="1489297709000" expanded="true" signature="59:87477" ph="..." />
-                <marker date="1489297709000" expanded="true" signature="98:498" ph="..." />
-                <marker date="1489297709000" expanded="true" signature="192:498" ph="..." />
-                <marker date="1489297709000" expanded="true" signature="85034:85076" ph="..." />
-                <marker date="1489297709000" expanded="true" signature="85034:85094" ph="..." />
-                <marker date="1489297709000" expanded="true" signature="85034:85107" ph="..." />
-                <marker date="1489297709000" expanded="true" signature="85034:85122" ph="..." />
+                <marker date="1489298666000" expanded="true" signature="59:87079" ph="..." />
+                <marker date="1489298666000" expanded="true" signature="98:328" ph="..." />
+                <marker date="1489298666000" expanded="true" signature="192:328" ph="..." />
+                <marker date="1489298666000" expanded="true" signature="84636:84678" ph="..." />
+                <marker date="1489298666000" expanded="true" signature="84636:84696" ph="..." />
+                <marker date="1489298666000" expanded="true" signature="84636:84709" ph="..." />
+                <marker date="1489298666000" expanded="true" signature="84636:84724" ph="..." />
               </folding>
             </state>
           </provider>
@@ -891,7 +886,7 @@
       <workItem from="1487043764927" duration="65324000" />
       <workItem from="1488594377711" duration="12059000" />
       <workItem from="1489122570751" duration="1640000" />
-      <workItem from="1489129409456" duration="12584000" />
+      <workItem from="1489129409456" duration="12840000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Set up">
       <created>1484027814684</created>
@@ -1068,11 +1063,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489229422643</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Setting up AWS Code Deploy">
+      <created>1489297833645</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1489297833645</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="276390000" />
+    <option name="totallyTimeSpent" value="276646000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1591,21 +1593,21 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1489297709000" expanded="true" signature="59:87477" ph="..." />
-            <marker date="1489297709000" expanded="true" signature="98:498" ph="..." />
-            <marker date="1489297709000" expanded="true" signature="192:498" ph="..." />
-            <marker date="1489297709000" expanded="true" signature="85034:85076" ph="..." />
-            <marker date="1489297709000" expanded="true" signature="85034:85094" ph="..." />
-            <marker date="1489297709000" expanded="true" signature="85034:85107" ph="..." />
-            <marker date="1489297709000" expanded="true" signature="85034:85122" ph="..." />
+            <marker date="1489298666000" expanded="true" signature="59:87079" ph="..." />
+            <marker date="1489298666000" expanded="true" signature="98:328" ph="..." />
+            <marker date="1489298666000" expanded="true" signature="192:328" ph="..." />
+            <marker date="1489298666000" expanded="true" signature="84636:84678" ph="..." />
+            <marker date="1489298666000" expanded="true" signature="84636:84696" ph="..." />
+            <marker date="1489298666000" expanded="true" signature="84636:84709" ph="..." />
+            <marker date="1489298666000" expanded="true" signature="84636:84724" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/buildspec.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        <state relative-caret-position="225">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
           <folding />
         </state>
       </provider>
