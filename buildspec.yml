@@ -20,7 +20,7 @@ phases:
       - echo build completed on `date`
 artifacts:
   files:
+    - appspec.yml
     - target/overseer.war
     - scripts/*
-    - appspec.yml
   discard-paths: yes
