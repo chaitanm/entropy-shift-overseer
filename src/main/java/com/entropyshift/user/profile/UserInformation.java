@@ -1,5 +1,7 @@
 package com.entropyshift.user.profile;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import info.archinnov.achilles.annotations.*;
 
 import java.util.Date;
@@ -9,7 +11,7 @@ import java.util.UUID;
 /**
  * Created by chaitanya.m on 2/20/17.
  */
-@Table(keyspace = "entropyshift",table = "user_profile")
+@Table(keyspace = "overseer",table = "user_profile")
 public class UserInformation
 {
     @Column("user_id")
@@ -17,6 +19,7 @@ public class UserInformation
     private String userId;
 
     @Column("uuid")
+    @JsonIgnore
     private UUID uuid;
 
     @Column("email_address")
@@ -37,34 +40,44 @@ public class UserInformation
 
     @Column("status")
     @Enumerated(Enumerated.Encoding.NAME)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private UserStatus status;
 
     @Column("registration_timestamp")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private long registrationTimestamp;
 
     @Column("registration_device_id")
+    @JsonIgnore
     private UUID registrationDeviceId;
 
     @Column("registration_browser_id")
+    @JsonIgnore
     private UUID registrationBrowserId;
 
     @Column("registration_ip_address")
+    @JsonIgnore
     private String registrationIpAddress;
 
     @Column("registration_geo_location")
     @Frozen
+    @JsonIgnore
     private GeoLocationInformation registrationGeoLocationInformation;
 
     @Column("registered_devices")
+    @JsonIgnore
     private Set<UUID> registeredDevices;
 
     @Column("password_rejection_count")
+    @JsonIgnore
     private Integer passwordRejectionCount;
 
     @Column("last_password_update_timestamp")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long lastPasswordUpdateTimestamp;
 
     @Column("last_login_timestamp")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long lastLoginTimestamp;
 
     public String getUserId()

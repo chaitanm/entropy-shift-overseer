@@ -2,6 +2,7 @@ package com.entropyshift.user.profile;
 
 import com.entropyshift.RegexConstants;
 import com.entropyshift.user.constants.RequestValidationErrorMessages;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import info.archinnov.achilles.annotations.Column;
 import info.archinnov.achilles.annotations.Enumerated;
 import info.archinnov.achilles.annotations.UDT;
@@ -13,7 +14,7 @@ import javax.validation.constraints.Size;
 /**
  * Created by chaitanya.m on 2/20/17.
  */
-@UDT(keyspace = "entropyshift", name = "address")
+@UDT(keyspace = "overseer", name = "address")
 public class AddressInformation
 {
     @Column("line1")
@@ -55,10 +56,10 @@ public class AddressInformation
 
     @Column("zip_code")
     @NotNull(message = RequestValidationErrorMessages.ZIP_CODE_NULL)
-    private int zipCode;
+    private Integer zipCode;
 
     @Column("zip_plus4")
-    private int zipPlus4;
+    private Integer zipPlus4;
 
     @Column("attention_line1")
     @Size(max = 150)
@@ -73,13 +74,16 @@ public class AddressInformation
     private AddressCategory addressCategory;
 
     @Column("effective_date")
-    private long effectiveDate;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Long effectiveDate;
 
     @Column("updated_date")
-    private long updatedDate;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Long updatedDate;
 
     @Column("termination_date")
-    private long terminationDate;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Long terminationDate;
 
     public String getLine1()
     {
@@ -161,22 +165,22 @@ public class AddressInformation
         this.country = country;
     }
 
-    public int getZipCode()
+    public Integer getZipCode()
     {
         return zipCode;
     }
 
-    public void setZipCode(int zipCode)
+    public void setZipCode(Integer zipCode)
     {
         this.zipCode = zipCode;
     }
 
-    public int getZipPlus4()
+    public Integer getZipPlus4()
     {
         return zipPlus4;
     }
 
-    public void setZipPlus4(int zipPlus4)
+    public void setZipPlus4(Integer zipPlus4)
     {
         this.zipPlus4 = zipPlus4;
     }
@@ -211,32 +215,32 @@ public class AddressInformation
         this.addressCategory = addressCategory;
     }
 
-    public long getEffectiveDate()
+    public Long getEffectiveDate()
     {
         return effectiveDate;
     }
 
-    public void setEffectiveDate(long effectiveDate)
+    public void setEffectiveDate(Long effectiveDate)
     {
         this.effectiveDate = effectiveDate;
     }
 
-    public long getUpdatedDate()
+    public Long getUpdatedDate()
     {
         return updatedDate;
     }
 
-    public void setUpdatedDate(long updatedDate)
+    public void setUpdatedDate(Long updatedDate)
     {
         this.updatedDate = updatedDate;
     }
 
-    public long getTerminationDate()
+    public Long getTerminationDate()
     {
         return terminationDate;
     }
 
-    public void setTerminationDate(long terminationDate)
+    public void setTerminationDate(Long terminationDate)
     {
         this.terminationDate = terminationDate;
     }

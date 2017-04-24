@@ -6,6 +6,9 @@ import com.entropyshift.user.registration.IRegistrationService;
 import com.entropyshift.user.registration.RegisterUserRequest;
 import com.entropyshift.user.registration.RegisterUserResponse;
 import com.entropyshift.user.registration.RegistrationStatusCodes;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +27,7 @@ import java.util.Map;
  * Created by chaitanya.m on 2/21/17.
  */
 @Path("/register")
+@Api(value = "/register", description = "User Registration")
 public class RegistrationController
 {
     @Autowired
@@ -33,7 +37,8 @@ public class RegistrationController
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response registerUser(@Valid RegisterUserRequest request, @Context HttpServletRequest servletRequest)
+    @ApiOperation(value = "Registers the user", response = RegisterUserResponse.class)
+    public Response registerUser(@Valid @ApiParam RegisterUserRequest request, @Context HttpServletRequest servletRequest)
     {
         try
         {

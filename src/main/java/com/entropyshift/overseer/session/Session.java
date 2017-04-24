@@ -6,7 +6,7 @@ import info.archinnov.achilles.annotations.Table;
 
 import java.util.UUID;
 
-@Table(keyspace = "entropyshift", table = "auth_session")
+@Table(keyspace = "overseer", table = "auth_session")
 public class Session
 {
     @PartitionKey

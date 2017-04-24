@@ -14,6 +14,11 @@ import com.entropyshift.overseer.session.CreateSessionResult;
 import com.entropyshift.overseer.session.ISessionService;
 import com.entropyshift.overseer.session.exceptions.SessionExpiredException;
 import com.entropyshift.overseer.session.exceptions.SessionNotFoundException;
+import com.entropyshift.user.profile.IUserInformationDao;
+import com.entropyshift.user.profile.UserInformation;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +37,7 @@ import java.util.Map;
  * Created by chaitanya.m on 2/9/17.
  */
 @Path("/auth")
+@Api(value = "/auth", description = "User Authentication")
 public class AuthenticationController
 {
     @Autowired
@@ -46,13 +52,17 @@ public class AuthenticationController
     @Autowired
     private IPropertiesProvider propertiesProvider;
 
+    @Autowired
+    private IUserInformationDao userInformationDao;
+
     private final String AUTH_SESSION_JWT_SUBJECT = "AUTH_SESSION";
     private static final String[] AUTH_SESSION_JWT_AUDIENCE = new String[]{"RESOURCE_ACCESS"};
 
     @Path("/authenticate")
     @Produces(MediaType.APPLICATION_JSON)
     @POST
-    public Response authenticate(AuthenticateUserRequest request, @Context HttpServletRequest servletRequest)
+    @ApiOperation(value = "Authenticate User", response = AuthenticateUserResponse.class)
+    public Response authenticate(@ApiParam AuthenticateUserRequest request, @Context HttpServletRequest servletRequest)
     {
         String requestId = request.getRequestId();
         try
@@ -71,31 +81,34 @@ public class AuthenticationController
                     new ArrayList<>(Arrays.asList(AUTH_SESSION_JWT_AUDIENCE)),
                     result.getCreatedTimestamp(), claims
             );
-            return Response.ok(new AuthenticateUserResponse(requestId, AuthStatusCodes.SUCCESS)).status(Response.Status.OK)
-                    .cookie(new NewCookie(this.propertiesProvider.getProperty(PropertyNameConstants.SESSION_COOKIE_NAME),token)).build();
+            final UserInformation userInformation = userInformationDao.getByUserId(request.getUserId());
+            return Response.ok(new AuthenticateUserResponse(requestId, AuthStatusCodes.SUCCESS, userInformation)).status(Response.Status.OK)
+                    .cookie(new NewCookie(this.propertiesProvider.getProperty(PropertyNameConstants.SESSION_COOKIE_NAME), token)).build();
         }
         catch (UserCredentialsNotFoundException e)
         {
-            return Response.ok(new AuthenticateUserResponse(requestId, AuthStatusCodes.USER_NOT_FOUND)).status(Response.Status.UNAUTHORIZED).build();
+            return Response.ok(new AuthenticateUserResponse(requestId, AuthStatusCodes.USER_NOT_FOUND, null)).status(Response.Status.UNAUTHORIZED).build();
         }
         catch (IncorrectPasswordException e)
         {
-            return Response.ok(new AuthenticateUserResponse(requestId, AuthStatusCodes.INCORRECT_PASSWORD)).status(Response.Status.UNAUTHORIZED).build();
+            return Response.ok(new AuthenticateUserResponse(requestId, AuthStatusCodes.INCORRECT_PASSWORD, null)).status(Response.Status.UNAUTHORIZED).build();
         }
         catch (Exception e)
         {
-            return Response.ok(new AuthenticateUserResponse(requestId, AuthStatusCodes.SERVER_ERROR)).status(Response.Status.INTERNAL_SERVER_ERROR).build();
+            return Response.ok(new AuthenticateUserResponse(requestId, AuthStatusCodes.SERVER_ERROR, null)).status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
 
     @Path("/keepsessionalive")
     @Produces(MediaType.APPLICATION_JSON)
     @GET
+    @ApiOperation(value = "Keep Session Alive")
     public Response keepSessionAlive(@Context HttpServletRequest servletRequest)
     {
         try
         {
-            this.sessionService.extendSession(servletRequest.getParameter(this.propertiesProvider.getProperty(PropertyNameConstants.SESSION_KEY_PARAMETER_NAME)));
+            this.sessionService.extendSession(servletRequest.getParameter(this.propertiesProvider
+                    .getProperty(PropertyNameConstants.SESSION_KEY_PARAMETER_NAME)));
             return Response.ok().status(Response.Status.OK).build();
         }
         catch (SessionNotFoundException | SessionExpiredException e)
@@ -108,14 +121,16 @@ public class AuthenticationController
     @Path("/logout")
     @Produces(MediaType.APPLICATION_JSON)
     @GET
+    @ApiOperation(value = "Logging Out The User")
     public Response logout(@Context HttpServletRequest servletRequest)
     {
         try
         {
-            this.sessionService.deleteSession(servletRequest.getParameter(this.propertiesProvider.getProperty(PropertyNameConstants.SESSION_KEY_PARAMETER_NAME)));
+            this.sessionService.deleteSession(servletRequest.getParameter(this.propertiesProvider
+                    .getProperty(PropertyNameConstants.SESSION_KEY_PARAMETER_NAME)));
             return Response.ok().status(Response.Status.OK).build();
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             return Response.ok().status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
@@ -124,15 +139,17 @@ public class AuthenticationController
     @Path("/deleteusersessions")
     @Produces(MediaType.APPLICATION_JSON)
     @DELETE
+    @ApiOperation(value = "Delete All Active Sessions of the User")
     public Response deleteUserSessions(@Context HttpServletRequest servletRequest)
     {
-        String userId = servletRequest.getParameter(this.propertiesProvider.getProperty(PropertyNameConstants.SESSION_USER_ID_PARAMETER_NAME));
+        String userId = servletRequest.getParameter(this.propertiesProvider
+                .getProperty(PropertyNameConstants.SESSION_USER_ID_PARAMETER_NAME));
         try
         {
             this.sessionService.deleteUserSessions(userId);
             return Response.ok().status(Response.Status.OK).build();
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             return Response.ok().status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }

@@ -9,7 +9,7 @@ import java.util.UUID;
 /**
  * Created by chaitanya.m on 1/10/17.
  */
-@Table(keyspace = "entropyshift", table = "oauth_authorization")
+@Table(keyspace = "overseer", table = "oauth_authorization")
 public class OAuthAuthorization
 {
     @PartitionKey

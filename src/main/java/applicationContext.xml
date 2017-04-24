@@ -19,9 +19,9 @@
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.postgresql.Driver"></property>
-        <property name="url" value="jdbc:postgresql://entropyshift-overseer.c2vsa6efd3td.us-east-1.rds.amazonaws.com:5432/overseer"></property>
-        <property name="username" value="entropyshift_overseer_webapp"></property>
-        <property name="password" value="pQCeW7tyEETMrUHJRfgGBEsHGG6J9hQQr5DXwnqAJuzFxHLA"></property>
+        <property name="url" value="jdbc:postgresql://localhost:5432/overseer"></property>
+        <property name="username" value="chaitanya.m"></property>
+        <property name="password" value=""></property>
     </bean>
 
     <bean id="sessionFactory"

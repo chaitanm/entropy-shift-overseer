@@ -53,7 +53,7 @@ CREATE TABLE jwt_app_key_meta_information(
 );
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('CASSANDRA_HOST','ec2-54-91-32-81.compute-1.amazonaws.com','chaitanya_m', 1484833120);
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('CASSANDRA_CQL_PORT','9042','chaitanya_m', 1484833120);
-INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('CASSANDRA_CLUSTER_NAME','Entropy Shift','chaitanya_m', 1484833120);
+INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('CASSANDRA_CLUSTER_NAME','Entropy-Shift','chaitanya_m', 1484833120);
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('PASSWORD_HASH_CALCULATOR','PBKDF2','chaitanya_m', 1484833120);
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('PASSWORD_HASH_ALGORITHM','SHA256','chaitanya_m', 1484833120);
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('PASSWORD_SALT_LENGTH','64','chaitanya_m', 1484833120);

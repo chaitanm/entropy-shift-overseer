@@ -6,7 +6,7 @@ import info.archinnov.achilles.annotations.UDT;
 /**
  * Created by chaitanya.m on 2/20/17.
  */
-@UDT(keyspace = "entropyshift",name = "geolocation")
+@UDT(keyspace = "overseer",name = "geolocation")
 public class GeoLocationInformation
 {
     @Column("latitude")

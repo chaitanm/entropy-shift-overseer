@@ -12,6 +12,9 @@ import com.entropyshift.overseer.oauth2.constants.OAuthParameters;
 import com.entropyshift.overseer.oauth2.exceptions.OAuthException;
 import com.entropyshift.overseer.oauth2.refresh.*;
 import com.google.gson.JsonObject;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.GET;
@@ -27,6 +30,7 @@ import java.util.*;
  * Created by chaitanya.m on 1/8/17.
  */
 @Path("/oauth")
+@Api(value = "/oauth", description = "OAuth 2.0 Specification - Implementation")
 public class OAuth2Controller
 {
     @Autowired
@@ -54,9 +58,15 @@ public class OAuth2Controller
 
     @Path("/authorize")
     @GET
-    public Response authorize(@QueryParam("client_id") String clientId, @QueryParam("user_id") String userId
-            , @QueryParam("scope") String scope, @QueryParam("state") String state
-            , @QueryParam("redirect_uri") String redirectUri, @QueryParam("response_type") String responseType)
+    @ApiOperation(value = "OAuth 2.0 Authorize Endpoint", code = 303)
+    public Response authorize(
+            @QueryParam("client_id") @ApiParam(value = "The Client's Id ", required = true) String clientId
+            , @QueryParam("user_id") @ApiParam(value = "The User Id (Resource Owner Id) for which Client need Access", required = true) String userId
+            , @QueryParam("scope") @ApiParam(value = "The Access Scope that defines Entitlements on User's Resources", required = true) String scope
+            , @QueryParam("state") @ApiParam(value = "Can be the User's Session Hash on Client's Side - This Helps to Prevent CSRF Attacks", required = true) String state
+            , @QueryParam("redirect_uri") @ApiParam(value = "Redirect URI of the Client", required = true) String redirectUri
+            , @QueryParam("response_type") @ApiParam(value = "The value be one of \"code\" for requesting an authorization code and \"token\" for" +
+            " requesting an access token (implicit grant)", required = true) String responseType)
     {
         OAuthAuthorizeRequest request = new OAuthAuthorizeRequest(responseType, UUID.fromString(clientId), userId, redirectUri, scope, state);
         OAuthResponse response = authorize(request);
@@ -65,8 +75,8 @@ public class OAuth2Controller
             OAuthAuthorizeErrorResponse errorResponse = (OAuthAuthorizeErrorResponse) response;
             URI uri = UriBuilder.fromUri(redirectUri)
                     .queryParam(OAuthParameters.ERROR, errorResponse.getError())
-                    .queryParam(OAuthParameters.ERROR_DESCRIPTION, errorResponse.getErrorDescription())
-                    .queryParam(OAuthParameters.ERROR_URI, errorResponse.getErrorUri())
+                    .queryParam(OAuthParameters.ERROR_DESCRIPTION, errorResponse.getErrorDescription() != null ? errorResponse.getErrorDescription() : "" )
+                    .queryParam(OAuthParameters.ERROR_URI, errorResponse.getErrorUri() != null ? errorResponse.getErrorUri() : "")
                     .queryParam(OAuthParameters.STATE, errorResponse.getState())
                     .build();
             return Response.seeOther(uri).build();
@@ -84,9 +94,14 @@ public class OAuth2Controller
 
     @Path("/access")
     @GET
-    public Response access(@QueryParam("grant_type") String grantType, @QueryParam("code") String code
-            , @QueryParam("redirect_uri") String redirectUri, @QueryParam("client_id") String clientId
-            , @QueryParam("user_id") String userId)
+    @ApiOperation(value = "OAuth 2.0 Access Token Endpoint", code = 303)
+    public Response access(
+            @QueryParam("grant_type") @ApiParam(value = "The value must be \"authorization_code\"", required = true) String grantType
+            , @QueryParam("code") @ApiParam(value = "The authorization code received from the authorization server", required = true) String code
+            , @QueryParam("redirect_uri") @ApiParam(value = "Redirect URI of the Client. The value must be same as " +
+            "Redirect URI mentioned at the time of authorization", required = true) String redirectUri
+            , @QueryParam("client_id") @ApiParam(value = "The Client's Id ", required = true) String clientId
+            , @QueryParam("user_id") @ApiParam(value = "The User Id (Resource Owner Id) for which Client need Access", required = true) String userId)
     {
         String authorizationCode;
         try
@@ -100,8 +115,8 @@ public class OAuth2Controller
         {
             URI uri = UriBuilder.fromUri(redirectUri)
                     .queryParam(OAuthParameters.ERROR, OAuthErrorCodes.SERVER_ERROR)
-                    .queryParam(OAuthParameters.ERROR_DESCRIPTION, null)
-                    .queryParam(OAuthParameters.ERROR_URI, null)
+                    .queryParam(OAuthParameters.ERROR_DESCRIPTION, "")
+                    .queryParam(OAuthParameters.ERROR_URI, "")
                     .build();
             return Response.seeOther(uri).build();
         }
@@ -112,8 +127,8 @@ public class OAuth2Controller
             OAuthAccessErrorResponse errorResponse = (OAuthAccessErrorResponse) response;
             URI uri = UriBuilder.fromUri(redirectUri)
                     .queryParam(OAuthParameters.ERROR, errorResponse.getError())
-                    .queryParam(OAuthParameters.ERROR_DESCRIPTION, errorResponse.getErrorDescription())
-                    .queryParam(OAuthParameters.ERROR_URI, errorResponse.getErrorUri())
+                    .queryParam(OAuthParameters.ERROR_DESCRIPTION, errorResponse.getErrorDescription() != null ? errorResponse.getError(): "")
+                    .queryParam(OAuthParameters.ERROR_URI, errorResponse.getErrorUri() != null ? errorResponse.getErrorUri() : "")
                     .build();
             return Response.seeOther(uri).build();
         }
@@ -133,8 +148,12 @@ public class OAuth2Controller
     @Path("/refresh")
     @GET
     @Produces("application/json")
-    public JsonObject refresh(@QueryParam("client_id") String clientId, @QueryParam("user_id") String userId,
-                              @QueryParam("grant_type") String grantType, @QueryParam("refresh_token") String refreshToken)
+    @ApiOperation(value = "OAuth 2.0 Refresh Token Endpoint", response = Object.class)
+    public JsonObject refresh(
+            @QueryParam("client_id") @ApiParam(value = "The Client's Id ", required = true) String clientId
+            , @QueryParam("user_id") @ApiParam(value = "The User Id (Resource Owner Id) for which Client need Access", required = true) String userId
+            , @QueryParam("grant_type") @ApiParam(value = "The value MUST be set to \"refresh_token\"", required = true) String grantType
+            , @QueryParam("refresh_token") @ApiParam(value = "Refresh Token", required = true) String refreshToken)
     {
         String extractedRefreshToken;
         try

@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
  * Created by chaitanya.m on 2/20/17.
  */
 
-@UDT(keyspace = "entropyshift",name = "phone_number")
+@UDT(keyspace = "overseer",name = "phone_number")
 public class PhoneNumberInformation
 {
     @Column("country_code")

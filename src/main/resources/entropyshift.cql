@@ -1,6 +1,6 @@
-CREATE KEYSPACE entropyshift WITH replication = {'class':'SimpleStrategy', 'replication_factor':1 };
+CREATE KEYSPACE overseer WITH replication = {'class':'SimpleStrategy', 'replication_factor':1 };
 
-USE entropyshift;
+USE overseer;
 
 CREATE TABLE oauth_authorization (
   authorization_code_hash blob PRIMARY KEY,
@@ -64,12 +64,12 @@ CREATE TABLE auth_session(
 
 CREATE INDEX auth_session_user_id_index ON auth_session(user_id);
 
-CREATE TYPE entropyshift.name(
+CREATE TYPE overseer.name(
  first_name text,
  last_name text,
  middle_name text);
 
-CREATE TYPE entropyshift.address(
+CREATE TYPE overseer.address(
  line1 text,
  line2 text,
  line3 text,
@@ -87,12 +87,12 @@ CREATE TYPE entropyshift.address(
  updated_date bigint,
  termination_date bigint);
 
-CREATE TYPE entropyshift.phone_number(
+CREATE TYPE overseer.phone_number(
  country_code text,
  national_identification_number text,
  category text);
 
-CREATE TYPE entropyshift.geolocation(
+CREATE TYPE overseer.geolocation(
  latitude double,
  longitude double,
  altitude double,
@@ -101,20 +101,20 @@ CREATE TYPE entropyshift.geolocation(
  heading double,
  speed double);
 
-CREATE TABLE entropyshift.user_profile(
+CREATE TABLE overseer.user_profile(
  user_id text,
- address_information_list set<frozen<entropyshift.address>>,
+ address_information_list set<frozen<overseer.address>>,
  date_of_birth timestamp,
  email_address text,
  last_login_timestamp bigint,
  last_password_update_timestamp bigint,
- name_information frozen<entropyshift.name>,
+ name_information frozen<overseer.name>,
  password_rejection_count int,
- phone_number_information_list set<frozen<entropyshift.phone_number>>,
+ phone_number_information_list set<frozen<overseer.phone_number>>,
  registered_devices set<uuid>,
  registration_browser_id uuid,
  registration_device_id uuid,
- registration_geo_location frozen<entropyshift.geolocation>,
+ registration_geo_location frozen<overseer.geolocation>,
  registration_ip_address text,
  registration_timestamp bigint,
  status text,
