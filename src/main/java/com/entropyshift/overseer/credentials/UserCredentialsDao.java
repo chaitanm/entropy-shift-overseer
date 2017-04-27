@@ -22,7 +22,7 @@ public class UserCredentialsDao implements IUserCredentialsDao
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true, isolation = Isolation.DEFAULT)
     public UserCredentials getUserCredentialsByUsername(String username) throws UserCredentialsNotFoundException
     {
-        UserCredentials credentials = (UserCredentials) template.get(UserCredentials.class, username);
+        UserCredentials credentials = template.get(UserCredentials.class, username);
         if(credentials == null) throw new UserCredentialsNotFoundException();
         return credentials;
     }
@@ -43,7 +43,7 @@ public class UserCredentialsDao implements IUserCredentialsDao
     @Override
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT)
     public void deleteUserCredentialsByUsername(String username) throws UserCredentialsNotFoundException {
-        UserCredentials credentials = (UserCredentials) template.get(UserCredentials.class, username);
+        UserCredentials credentials =  template.get(UserCredentials.class, username);
         if(credentials == null) throw new UserCredentialsNotFoundException();
         template.delete(credentials);
     }

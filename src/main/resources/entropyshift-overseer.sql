@@ -59,7 +59,7 @@ INSERT INTO configuration(name, value, created_username, created_timestamp) VALU
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('PASSWORD_SALT_LENGTH','64','chaitanya_m', 1484833120);
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('PASSWORD_HASH_ITERATION_COUNT','10000','chaitanya_m', 1484833120);
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('PASSWORD_HASH_DERIVED_KEY_LENGTH','256','chaitanya_m', 1484833120);
-INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('OAUTH_ISSUER','Endurance','chaitanya_m', 1484833120);
+INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('OAUTH_ISSUER','ENTROPY-SHIFT','chaitanya_m', 1484833120);
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('OAUTH_AUTHORIZATION_CODE_EXPIRES_IN_SECONDS','60','chaitanya_m', 1484833120);
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('OAUTH_ACCESS_TOKEN_EXPIRES_IN_SECONDS','1200','chaitanya_m', 1484833120);
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('OAUTH_REFRESH_TOKEN_EXPIRES_IN_SECONDS','86400','chaitanya_m', 1484833120);
@@ -70,3 +70,4 @@ INSERT INTO configuration(name, value, created_username, created_timestamp) VALU
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('SESSION_DEFAULT_SCOPE','*','chaitanya_m', 1484833120);
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('SESSION_KEY_PARAMETER_NAME','SESSION_KEY','chaitanya_m', 1484833120);
 INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('SESSION_USER_ID_PARAMETER_NAME','SESSION_USER_ID','chaitanya_m', 1484833120);
+INSERT INTO configuration(name, value, created_username, created_timestamp) VALUES ('AUTH_ISSUER','ENTROPY-SHIFT','chaitanya_m', 1484833120);

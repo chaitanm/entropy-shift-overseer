@@ -35,7 +35,8 @@ public class SessionService implements ISessionService
     }
 
     @Override
-    public CreateSessionResult createSession(String userId, String scope, String ipAddress, UUID deviceId, UUID browserId)
+    public CreateSessionResult createSession(final String userId, final String scope, final String ipAddress
+            , final UUID deviceId, final UUID browserId)
     {
         long currentTimestamp = Instant.now().toEpochMilli();
         Session session = new Session();
@@ -54,9 +55,8 @@ public class SessionService implements ISessionService
         return new CreateSessionResult(sessionKey, currentTimestamp, scope);
     }
 
-
     @Override
-    public void extendSession(String sessionKey) throws SessionNotFoundException, SessionExpiredException
+    public void extendSession(final String sessionKey) throws SessionNotFoundException, SessionExpiredException
     {
         long currentTimestamp = Instant.now().toEpochMilli();
         byte[] sessionKeyHash = digest.digest(sessionKey.getBytes(StandardCharsets.UTF_8));
@@ -82,22 +82,37 @@ public class SessionService implements ISessionService
     }
 
     @Override
-    public void deleteSession(String sessionKey)
+    public void deleteSession(final String sessionKey)
     {
         byte[] sessionKeyHash = digest.digest(sessionKey.getBytes(StandardCharsets.UTF_8));
         this.sessionDao.deleteBySessionKeyhash(sessionKeyHash);
     }
 
     @Override
-    public void deleteUserSessions(String userId)
+    public void deleteUserSessions(final String userId)
     {
         List<Session> sessionList = this.sessionDao.getByUserId(userId);
-        if(sessionList == null || sessionList.size() == 0) return;
+        if (sessionList == null || sessionList.size() == 0)
+        {
+            return;
+        }
         List<byte[]> sessionKeyHashList = new ArrayList<>();
-        sessionList.forEach(session->{
-            sessionKeyHashList.add(session.getSessionKeyHash());
-        });
+        sessionList.forEach(session -> sessionKeyHashList.add(session.getSessionKeyHash()));
         this.sessionDao.bulkDelete(sessionKeyHashList);
+    }
+
+    @Override
+    public Session validateSession(final String sessionKey) throws SessionExpiredException
+    {
+        byte[] sessionKeyHash = digest.digest(sessionKey.getBytes(StandardCharsets.UTF_8));
+        final Session session = sessionDao.getBySessionKeyHash(sessionKeyHash);
+        if (session.getExpires() < Instant.now().toEpochMilli())
+        {
+            throw new SessionExpiredException();
+        }
+        return session;
+
+
     }
 
 }

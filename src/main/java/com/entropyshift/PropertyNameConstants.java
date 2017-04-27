@@ -9,6 +9,7 @@ public class PropertyNameConstants
     public static final String CASSANDRA_CQL_PORT = "CASSANDRA_CQL_PORT";
     public static final String CASSANDRA_CLUSTER_NAME = "CASSANDRA_CLUSTER_NAME";
     public static final String OAUTH_ISSUER = "OAUTH_ISSUER";
+    public static final String AUTH_ISSUER = "AUTH_ISSUER";
     public static final String PASSWORD_HASH_CALCULATOR = "PASSWORD_HASH_CALCULATOR";
     public static final String PASSWORD_HASH_ALGORITHM = "PASSWORD_HASH_ALGORITHM";
     public static final String PASSWORD_SALT_LENGTH = "PASSWORD_SALT_LENGTH";
@@ -22,7 +23,8 @@ public class PropertyNameConstants
     public static final String SESSION_EXTENSION_TIME_IN_SECONDS = "SESSION_EXTENSION_TIME_IN_SECONDS";
     public static final String SESSION_COOKIE_NAME = "SESSION_COOKIE_NAME";
     public static final String SESSION_DEFAULT_SCOPE = "SESSION_DEFAULT_SCOPE";
-    public static final String SESSION_KEY_PARAMETER_NAME = "SESSION_KEY_PARAMETER_NAME";
     public static final String SESSION_USER_ID_PARAMETER_NAME = "SESSION_USER_ID_PARAMETER_NAME";
+    public static final String SESSION_DATA = "SESSION_DATA";
+    public static final String SESSION_KEY = "SESSION_KEY";
 
 }

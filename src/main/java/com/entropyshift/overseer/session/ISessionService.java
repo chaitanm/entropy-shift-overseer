@@ -17,4 +17,7 @@ public interface ISessionService
     void deleteSession(String sessionKey);
 
     void deleteUserSessions(String userId);
+
+    Session validateSession(final String sessionKey) throws SessionExpiredException;
+
 }

@@ -37,7 +37,8 @@ public class OAuthAuthorizationDao implements IOAuthAuthorizationDao
     public void updateUserValidatedFlag(byte[] authorizationCodeHash, boolean flag)
     {
         this.dataManagerFactoryProvider.getManagerFactory().forOAuthAuthorization().dsl()
-                .update().fromBaseTable().userValidated().Set(flag).where().authorizationCodeHash().equals(authorizationCodeHash);
+                .update().fromBaseTable().userValidated().Set(flag).where().authorizationCodeHash()
+                .Eq(authorizationCodeHash).execute();
     }
 
     @Override

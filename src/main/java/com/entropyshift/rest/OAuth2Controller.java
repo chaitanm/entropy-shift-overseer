@@ -50,7 +50,7 @@ public class OAuth2Controller
 
 
     private static final String OAUTH_AUTHORIZATION_JWT_SUBJECT = "OAUTH_AUTHORIZATION";
-    private static final String[] OAUTH_AUTHORIZATION_JWT_AUDIENCE = new String[]{"OAUTH_ACCESS"};
+    private static final String[] OAUTH_AUTHORIZATION_JWT_AUDIENCE = new String[]{"OAUTH_ACCESS", "AUTH_AUTHORIZATION_CODE"};
     private static final String OAUTH_ACCESS_JWT_SUBJECT = "OAUTH_ACCESS";
     private static final String[] OAUTH_ACCESS_JWT_AUDIENCE = new String[]{"RESOURCE_ACCESS"};
     private static final String OAUTH_REFRESH_JWT_SUBJECT = "OAUTH_REFRESH";
@@ -108,7 +108,7 @@ public class OAuth2Controller
         {
             Map<String, Object> claims = jsonWebTokenProvider.consumeToken(code, propertiesProvider.getProperty(PropertyNameConstants.OAUTH_ISSUER)
                     , OAUTH_ACCESS_JWT_SUBJECT
-                    , Long.parseLong(propertiesProvider.getProperty(PropertyNameConstants.OAUTH_ACCESS_TOKEN_EXPIRES_IN_SECONDS)) * 1000);
+                    , Long.parseLong(propertiesProvider.getProperty(PropertyNameConstants.OAUTH_AUTHORIZATION_CODE_EXPIRES_IN_SECONDS)) * 1000);
             authorizationCode = claims.get(OAuthParameters.AUTHORIZATION_CODE).toString();
         }
         catch (Exception e)
