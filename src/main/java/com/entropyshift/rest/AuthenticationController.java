@@ -2,21 +2,21 @@ package com.entropyshift.rest;
 
 import com.entropyshift.PropertyNameConstants;
 import com.entropyshift.configuration.IPropertiesProvider;
-import com.entropyshift.overseer.auth.*;
+import com.entropyshift.overseer.auth.IAuthenticationService;
 import com.entropyshift.overseer.auth.annotations.AuthorizeSession;
 import com.entropyshift.overseer.auth.constants.AuthParameters;
 import com.entropyshift.overseer.auth.constants.AuthStatusCodes;
-import com.entropyshift.overseer.credentials.ICredentialService;
+import com.entropyshift.overseer.auth.request.AuthenticateAuthorizationCodeRequest;
+import com.entropyshift.overseer.auth.request.AuthenticateUserRequest;
+import com.entropyshift.overseer.auth.response.AuthenticateAuthorizationCodeResponse;
+import com.entropyshift.overseer.auth.response.AuthenticateUserResponse;
+import com.entropyshift.overseer.auth.response.ValidateSessionResponse;
+import com.entropyshift.overseer.auth.result.AuthenticateUserResult;
 import com.entropyshift.overseer.credentials.exceptions.IncorrectPasswordException;
 import com.entropyshift.overseer.credentials.exceptions.UserCredentialsNotFoundException;
 import com.entropyshift.overseer.crypto.jwt.IJsonWebTokenProvider;
-import com.entropyshift.overseer.oauth2.authorize.IOAuthAuthorizationDao;
 import com.entropyshift.overseer.oauth2.constants.OAuthParameters;
-import com.entropyshift.overseer.session.CreateSessionResult;
-import com.entropyshift.overseer.session.ISessionService;
 import com.entropyshift.overseer.session.Session;
-import com.entropyshift.user.profile.IUserInformationDao;
-import com.entropyshift.user.profile.UserInformation;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -30,8 +30,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
 import java.net.URI;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -44,11 +42,7 @@ import java.util.Map;
 @Api(value = "/auth", description = "User Authentication")
 public class AuthenticationController
 {
-    @Autowired
-    private ICredentialService credentialService;
 
-    @Autowired
-    private ISessionService sessionService;
 
     @Autowired
     private IJsonWebTokenProvider jsonWebTokenProvider;
@@ -56,11 +50,9 @@ public class AuthenticationController
     @Autowired
     private IPropertiesProvider propertiesProvider;
 
-    @Autowired
-    private IUserInformationDao userInformationDao;
 
     @Autowired
-    private IOAuthAuthorizationDao oAuthAuthorizationDao;
+    private IAuthenticationService authenticationService;
 
     private final String AUTH_SESSION_JWT_SUBJECT = "AUTH_SESSION";
     private static final String[] AUTH_SESSION_JWT_AUDIENCE = new String[]{"RESOURCE_ACCESS"};
@@ -72,38 +64,46 @@ public class AuthenticationController
     @ApiOperation(value = "Authenticate User", response = AuthenticateUserResponse.class)
     public Response authenticate(@ApiParam AuthenticateUserRequest request, @Context HttpServletRequest servletRequest)
     {
-        String requestId = request.getRequestId();
         try
         {
-            this.credentialService.authenticateCredentials(request.getUserId(), request.getPassword());
-            CreateSessionResult result = this.sessionService.createSession(request.getUserId()
-                    , this.propertiesProvider.getProperty(PropertyNameConstants.SESSION_DEFAULT_SCOPE), null, null, null);
+            AuthenticateUserResult result = authenticationService.authenticate(request);
+            if (!result.getStatus().equals(AuthStatusCodes.SUCCESS))
+            {
+                return Response.ok(new AuthenticateUserResponse(result.getRequestId(), result.getStatus()
+                        , result.getUserInformation())).build();
+            }
             Map<String, Object> claims = new HashMap<>();
             claims.put(AuthParameters.USER_ID, request.getUserId());
-            claims.put(AuthParameters.SCOPE, result.getScope());
+            claims.put(AuthParameters.SCOPE, result.getCreateSessionResult().getScope());
             claims.put(AuthParameters.WEBSITE, new URI(servletRequest.getRequestURI()).getHost());
-            claims.put(AuthParameters.SESSION_KEY, result.getSessionKey());
+            claims.put(AuthParameters.SESSION_KEY, result.getCreateSessionResult().getSessionKey());
             String token = this.jsonWebTokenProvider.generateToken(
                     this.propertiesProvider.getProperty(PropertyNameConstants.AUTH_ISSUER),
                     AUTH_SESSION_JWT_SUBJECT,
                     new ArrayList<>(Arrays.asList(AUTH_SESSION_JWT_AUDIENCE)),
-                    result.getCreatedTimestamp(), claims
+                    result.getCreateSessionResult().getCreatedTimestamp(), claims
             );
-            final UserInformation userInformation = userInformationDao.getByUserId(request.getUserId());
-            return Response.ok(new AuthenticateUserResponse(requestId, AuthStatusCodes.SUCCESS, userInformation)).status(Response.Status.OK)
-                    .cookie(new NewCookie(this.propertiesProvider.getProperty(PropertyNameConstants.SESSION_COOKIE_NAME), token)).build();
+            return Response.ok(new AuthenticateUserResponse(result.getRequestId(), AuthStatusCodes.SUCCESS
+                    , result.getUserInformation()))
+                    .status(Response.Status.OK)
+                    .cookie(new NewCookie(this.propertiesProvider.getProperty(PropertyNameConstants.SESSION_COOKIE_NAME)
+                            , token, "/", null, null, -1, false, true))
+                    .build();
         }
         catch (UserCredentialsNotFoundException e)
         {
-            return Response.ok(new AuthenticateUserResponse(requestId, AuthStatusCodes.USER_NOT_FOUND, null)).status(Response.Status.UNAUTHORIZED).build();
+            return Response.ok(new AuthenticateUserResponse(request.getRequestId(), AuthStatusCodes.USER_NOT_FOUND, null))
+                    .status(Response.Status.UNAUTHORIZED).build();
         }
         catch (IncorrectPasswordException e)
         {
-            return Response.ok(new AuthenticateUserResponse(requestId, AuthStatusCodes.INCORRECT_PASSWORD, null)).status(Response.Status.UNAUTHORIZED).build();
+            return Response.ok(new AuthenticateUserResponse(request.getRequestId(), AuthStatusCodes.INCORRECT_PASSWORD, null))
+                    .status(Response.Status.UNAUTHORIZED).build();
         }
         catch (Exception e)
         {
-            return Response.ok(new AuthenticateUserResponse(requestId, AuthStatusCodes.SERVER_ERROR, null)).status(Response.Status.INTERNAL_SERVER_ERROR).build();
+            return Response.ok(new AuthenticateUserResponse(request.getRequestId(), AuthStatusCodes.SERVER_ERROR, null))
+                    .status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
 
@@ -120,10 +120,8 @@ public class AuthenticationController
                     , AUTH_AUTHORIZATION_CODE_SUBJECT
                     , Long.parseLong(propertiesProvider.getProperty(PropertyNameConstants.OAUTH_AUTHORIZATION_CODE_EXPIRES_IN_SECONDS)) * 1000);
             final String authorizationCode = claims.get(OAuthParameters.AUTHORIZATION_CODE).toString();
-            this.credentialService.authenticateCredentials(request.getUserId(), request.getPassword());
-            final MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            final byte[] authorizationCodeHash = digest.digest(authorizationCode.getBytes(StandardCharsets.UTF_8));
-            this.oAuthAuthorizationDao.updateUserValidatedFlag(authorizationCodeHash, true);
+            this.authenticationService.authenticateAuthorizationCode(request.getRequestId(), authorizationCode
+                    , request.getUserId(), request.getPassword());
             return Response.ok(new AuthenticateAuthorizationCodeResponse(request.getRequestId(), AuthStatusCodes.SUCCESS)).build();
         }
         catch (IncorrectPasswordException e)
@@ -159,9 +157,8 @@ public class AuthenticationController
     {
         try
         {
-            final String sessionKey = (String) containerRequestContext
-                    .getProperty(PropertyNameConstants.SESSION_KEY);
-            this.sessionService.extendSession(sessionKey);
+            final String sessionKey = (String) containerRequestContext.getProperty(PropertyNameConstants.SESSION_KEY);
+            this.authenticationService.keepSessionAlive(sessionKey);
             return Response.ok().status(Response.Status.OK).build();
         }
         catch (Exception ex)
@@ -181,12 +178,19 @@ public class AuthenticationController
         {
             final String sessionKey = (String) containerRequestContext
                     .getProperty(PropertyNameConstants.SESSION_KEY);
-            this.sessionService.deleteSession(sessionKey);
-            return Response.ok().status(Response.Status.OK).build();
+            this.authenticationService.logout(sessionKey);
+            return Response.ok()
+                    .status(Response.Status.OK)
+                    .cookie(new NewCookie(this.propertiesProvider.getProperty(PropertyNameConstants.SESSION_COOKIE_NAME)
+                            , "", "/", null, null, 0, false, true))
+                    .build();
         }
         catch (Exception e)
         {
-            return Response.ok().status(Response.Status.INTERNAL_SERVER_ERROR).build();
+            return Response
+                    .ok()
+                    .status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .build();
         }
     }
 
@@ -200,7 +204,7 @@ public class AuthenticationController
                 .getProperty(PropertyNameConstants.SESSION_USER_ID_PARAMETER_NAME));
         try
         {
-            this.sessionService.deleteUserSessions(userId);
+            this.authenticationService.deleteUserSessions(userId);
             return Response.ok().status(Response.Status.OK).build();
         }
         catch (Exception e)

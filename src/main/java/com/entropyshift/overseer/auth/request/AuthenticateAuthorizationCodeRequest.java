@@ -1,4 +1,4 @@
-package com.entropyshift.overseer.auth;
+package com.entropyshift.overseer.auth.request;
 
 /**
  * Created by chaitanya.m on 4/24/17.

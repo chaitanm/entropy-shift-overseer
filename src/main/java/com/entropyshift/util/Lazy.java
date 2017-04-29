@@ -1,6 +1,5 @@
 package com.entropyshift.util;
 
-import java.util.Optional;
 import java.util.function.Supplier;
 
 /**
@@ -8,7 +7,6 @@ import java.util.function.Supplier;
  */
 public class Lazy<T>
 {
-    Optional<T> value = Optional.empty();
     Supplier<T> supplier;
 
     public Lazy(Supplier<T> supplier)
@@ -18,11 +16,7 @@ public class Lazy<T>
 
     public T get()
     {
-        if (!value.isPresent())
-        {
-            value = Optional.of(supplier.get());
-        }
-        return value.get();
+        return supplier.get();
     }
 
 }

@@ -165,6 +165,14 @@
         <constructor-arg ref="userInformationDao"></constructor-arg>
     </bean>
 
+    <bean id="authenticationService" class="com.entropyshift.overseer.auth.AuthenticationService">
+        <constructor-arg ref="credentialService"></constructor-arg>
+        <constructor-arg ref="sessionService"></constructor-arg>
+        <constructor-arg ref="userInformationDao"></constructor-arg>
+        <constructor-arg ref="propertiesProvider"></constructor-arg>
+        <constructor-arg ref="oAuthAuthorizationDao"></constructor-arg>
+    </bean>
+
 
 </beans>
 

@@ -1,4 +1,4 @@
-package com.entropyshift.overseer.auth;
+package com.entropyshift.overseer.auth.response;
 
 import com.entropyshift.user.profile.UserInformation;
 import io.swagger.annotations.ApiModel;

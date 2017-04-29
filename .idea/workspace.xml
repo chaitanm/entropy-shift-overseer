@@ -2,26 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d83c074e-6716-4097-89c5-9bf1ef0d406e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/AuthenticateAuthorizationCodeRequest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/AuthenticateAuthorizationCodeResponse.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/ValidateSessionResponse.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/annotations/AuthorizeSession.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/filter/AuthorizationFilter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/session/exceptions/InvalidSessionException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/rest/ResourceFilterBindingFeature.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/util/Lazy.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/AuthenticationService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/IAuthenticationService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/result/AuthenticateUserResult.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/AuthRequest.java" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/request/AuthRequest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/AuthResponse.java" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/response/AuthResponse.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/AuthenticateAuthorizationCodeRequest.java" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/request/AuthenticateAuthorizationCodeRequest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/AuthenticateAuthorizationCodeResponse.java" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/response/AuthenticateAuthorizationCodeResponse.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/AuthenticateUserRequest.java" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/request/AuthenticateUserRequest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/AuthenticateUserResponse.java" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/response/AuthenticateUserResponse.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/ValidateSessionResponse.java" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/response/ValidateSessionResponse.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/entropyshift/PropertyNameConstants.java" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/PropertyNameConstants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/AuthenticateUserRequest.java" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/AuthenticateUserRequest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/credentials/UserCredentialsDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/credentials/UserCredentialsDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/oauth2/authorize/OAuthAuthorizationDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/oauth2/authorize/OAuthAuthorizationDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/session/ISessionService.java" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/session/ISessionService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/session/Session.java" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/session/Session.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/session/SessionService.java" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/session/SessionService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/applicationContext.xml" afterPath="$PROJECT_DIR$/src/main/java/applicationContext.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/constants/AuthStatusCodes.java" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/constants/AuthStatusCodes.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/filter/AuthorizationFilter.java" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/filter/AuthorizationFilter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/entropyshift/rest/AuthenticationController.java" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/rest/AuthenticationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/entropyshift/rest/OAuth2Controller.java" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/rest/OAuth2Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/entropyshift/rest/RESTApplication.java" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/rest/RESTApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/entropyshift-overseer.sql" afterPath="$PROJECT_DIR$/src/main/resources/entropyshift-overseer.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/entropyshift/util/Lazy.java" afterPath="$PROJECT_DIR$/src/main/java/com/entropyshift/util/Lazy.java" />
     </list>
     <ignored path="entropy-shift-overseer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,111 +40,123 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AuthenticationController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AuthenticationController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/rest/AuthenticationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="498">
-              <caret line="209" column="9" selection-start-line="209" selection-start-column="9" selection-end-line="209" selection-end-column="9" />
+            <state relative-caret-position="168">
+              <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OAuth2Controller.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/rest/OAuth2Controller.java">
+      <file leaf-file-name="AuthenticateAuthorizationCodeRequest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/request/AuthenticateAuthorizationCodeRequest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="42" column="35" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
+            <state relative-caret-position="75">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SessionService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/session/SessionService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-540">
-              <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuthorizeSession.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/annotations/AuthorizeSession.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#263#264#0" expanded="false" />
+                <element signature="e#303#304#0" expanded="false" />
+                <element signature="e#373#374#0" expanded="false" />
+                <element signature="e#431#432#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="ValidateSessionResponse.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/ValidateSessionResponse.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/response/ValidateSessionResponse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ResourceMethodInvocationHandlerFactory.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.23.2/jersey-server-2.23.2.jar!/org/glassfish/jersey/server/model/internal/ResourceMethodInvocationHandlerFactory.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuthorizationFilter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/filter/AuthorizationFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="42" column="7" selection-start-line="42" selection-start-column="7" selection-end-line="48" selection-end-column="118" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServerRuntime.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.23.2/jersey-server-2.23.2.jar!/org/glassfish/jersey/server/ServerRuntime.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="317" column="0" selection-start-line="317" selection-start-column="0" selection-end-line="317" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ISessionService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/session/ISessionService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+            <state relative-caret-position="150">
+              <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="false" />
+                <element signature="e#653#654#0" expanded="false" />
+                <element signature="e#682#683#0" expanded="false" />
+                <element signature="e#718#719#0" expanded="false" />
+                <element signature="e#746#747#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PropertyNameConstants.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/PropertyNameConstants.java">
+      <file leaf-file-name="applicationContext.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/applicationContext.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="27" column="42" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="42" />
+            <state relative-caret-position="2610">
+              <caret line="174" column="0" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IUserInformationDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/user/profile/IUserInformationDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AuthenticateAuthorizationCodeResponse.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/response/AuthenticateAuthorizationCodeResponse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#714#715#0" expanded="false" />
+                <element signature="e#743#744#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IAuthenticationService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/IAuthenticationService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AuthenticationService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/AuthenticationService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="99" column="48" selection-start-line="99" selection-start-column="48" selection-end-line="99" selection-end-column="48" />
+              <folding>
+                <element signature="e#4789#4790#0" expanded="true" />
+                <element signature="e#4850#4851#0" expanded="true" />
+                <element signature="e#4927#4928#0" expanded="true" />
+                <element signature="e#4989#4990#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HealthCheckController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/rest/HealthCheckController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AuthenticateUserResult.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/result/AuthenticateUserResult.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -184,12 +192,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/user/registration/RegistrationStatusCodes.java" />
-        <option value="$PROJECT_DIR$/Dockerfile" />
-        <option value="$PROJECT_DIR$/Procfile" />
-        <option value="$PROJECT_DIR$/scripts/environment-setup.sh" />
-        <option value="$PROJECT_DIR$/scripts/configure_http_post.xsl" />
-        <option value="$PROJECT_DIR$/scripts/configure_http_port.xsl" />
         <option value="$PROJECT_DIR$/scripts/start_application.sh" />
         <option value="$PROJECT_DIR$/buildspec.yml" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -198,7 +200,6 @@
         <option value="$PROJECT_DIR$/appspec.yml" />
         <option value="$PROJECT_DIR$/scripts/environment_setup.sh" />
         <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/rest/HealthCheckController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/applicationContext.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/oauth2/access/OAuthAccess.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/oauth2/authorize/OAuthAuthorization.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/oauth2/refresh/OAuthRefresh.java" />
@@ -223,7 +224,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/oauth2/authorize/OAuthAuthorizationDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/AuthenticateAuthorizationCodeResponse.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/filters/ValidateSessionFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/util/Lazy.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/session/Session.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/session/SessionService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/session/ISessionService.java" />
@@ -233,8 +233,16 @@
         <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/rest/RESTApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/ValidateSessionResponse.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/PropertyNameConstants.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/constants/AuthStatusCodes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/util/Lazy.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/filter/AuthorizationFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/request/AuthRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/response/ValidateSessionResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/result/AuthenticateUserResult.java" />
+        <option value="$PROJECT_DIR$/src/main/java/applicationContext.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/AuthenticationService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/rest/AuthenticationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/IAuthenticationService.java" />
       </list>
     </option>
   </component>
@@ -252,32 +260,7 @@
     </option>
   </component>
   <component name="MavenProjectNavigator">
-    <treeState>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="overseer Maven Webapp" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="overseer Maven Webapp" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Lifecycle" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
-        </PATH_ELEMENT>
-      </PATH>
-    </treeState>
+    <treeState />
   </component>
   <component name="ProjectFrameBounds">
     <option name="width" value="1280" />
@@ -308,6 +291,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -357,248 +343,9 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropy-shift-overseer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropy-shift-overseer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropy-shift-overseer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropy-shift-overseer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropy-shift-overseer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropy-shift-overseer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropyshift" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropy-shift-overseer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropy-shift-overseer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropyshift" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropy-shift-overseer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropy-shift-overseer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropyshift" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="overseer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="session" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropy-shift-overseer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropy-shift-overseer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropyshift" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="overseer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropy-shift-overseer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropy-shift-overseer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropyshift" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="overseer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="auth" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropy-shift-overseer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropy-shift-overseer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entropyshift" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="overseer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="auth" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="filter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1155,7 +902,8 @@
       <workItem from="1489129409456" duration="33554000" />
       <workItem from="1492192950161" duration="3275000" />
       <workItem from="1492686206872" duration="36493000" />
-      <workItem from="1493228598519" duration="7537000" />
+      <workItem from="1493228598519" duration="19974000" />
+      <workItem from="1493369321346" duration="2845000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Set up">
       <created>1484027814684</created>
@@ -1402,11 +1150,18 @@
       <option name="project" value="LOCAL" />
       <updated>1493002641721</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Session Filters">
+      <created>1493270435256</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1493270435256</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="344665000" />
+    <option name="totallyTimeSpent" value="359947000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1418,7 +1173,7 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2180937" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21778488" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31506848" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37123287" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1429,11 +1184,10 @@
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41095892" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4108911" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1441,6 +1195,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33013698" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1527,7 +1282,8 @@
     <MESSAGE value="Setting up AWS Code Deploy" />
     <MESSAGE value="Updating Environment Set up Steps" />
     <MESSAGE value="Swagger Integration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Swagger Integration" />
+    <MESSAGE value="Session Filters" />
+    <option name="LAST_COMMIT_MESSAGE" value="Session Filters" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1553,20 +1309,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/filter/AuthorizationFilter.java</url>
-          <line>42</line>
-          <properties>
-            <option name="lambda-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/filter/AuthorizationFilter.java</url>
-          <line>48</line>
+          <line>53</line>
           <properties />
-          <option name="timeStamp" value="39" />
+          <option name="timeStamp" value="45" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="40" />
+      <option name="time" value="46" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1575,178 +1323,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/3.2.3.RELEASE/spring-web-3.2.3.RELEASE.jar!/org/springframework/http/HttpStatus.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/ws/rs/javax.ws.rs-api/2.0.1/javax.ws.rs-api-2.0.1.jar!/javax/ws/rs/core/Response.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="175" column="46" selection-start-line="175" selection-start-column="46" selection-end-line="175" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/credentials/UserCredentialsDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/AuthenticateUserRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/AuthenticateAuthorizationCodeRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-          <folding>
-            <element signature="e#295#296#0" expanded="false" />
-            <element signature="e#365#366#0" expanded="false" />
-            <element signature="e#423#424#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/oauth2/access/OAuthAccessSuccessResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/oauth2/access/OAuthAccessService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="54" column="5" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/oauth2/authorize/IOAuthAuthorizationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/oauth2/access/IOAuthAccessService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/oauth2/authorize/OAuthAuthorizationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/oauth2/authorize/IOAuthAuthorizationDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/session/CreateSessionResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1860">
-          <caret line="147" column="19" selection-start-line="147" selection-start-column="19" selection-end-line="147" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#25830#0" expanded="false" />
-            <element signature="e#10065#10066#0" expanded="false" />
-            <element signature="e#10148#10149#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/generated-sources/annotations/info/archinnov/achilles/generated/manager/OAuthAuthorization_Manager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="152" column="43" selection-start-line="152" selection-start-column="43" selection-end-line="152" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/info/archinnov/achilles-model/5.1.5/achilles-model-5.1.5.jar!/info/archinnov/achilles/type/SchemaNameProvider.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/generated-sources/annotations/info/archinnov/achilles/generated/dsl/OAuthAuthorization_Update.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="52" column="71" selection-start-line="52" selection-start-column="71" selection-end-line="52" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/AuthenticateUserResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="103" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#889#890#0" expanded="false" />
-            <element signature="e#918#919#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/AuthenticateAuthorizationCodeResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" column="50" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="50" />
-          <folding>
-            <element signature="e#705#706#0" expanded="false" />
-            <element signature="e#734#735#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/filters/ValidateSessionFilter.java" />
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/util/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2775">
-          <caret line="211" column="6" selection-start-line="211" selection-start-column="6" selection-end-line="211" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#53227#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/util/Lazy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/crypto/jwt/IJsonWebTokenProvider.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -1767,7 +1343,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1805,7 +1380,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="501">
           <caret line="69" column="9" selection-start-line="69" selection-start-column="9" selection-end-line="69" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1831,7 +1405,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="66" column="11" selection-start-line="66" selection-start-column="11" selection-end-line="66" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1839,7 +1412,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
           <caret line="100" column="33" selection-start-line="100" selection-start-column="33" selection-end-line="100" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1863,7 +1435,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1871,14 +1442,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/AuthResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1895,15 +1458,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.23.2/jersey-server-2.23.2.jar!/org/glassfish/jersey/server/ContainerFilteringStage.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1911,15 +1465,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.23.2/jersey-server-2.23.2.jar!/org/glassfish/jersey/server/ServerRuntime.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="317" column="0" selection-start-line="317" selection-start-column="0" selection-end-line="317" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1927,17 +1472,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
           <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/ValidateSessionResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1956,7 +1490,7 @@
         <state relative-caret-position="165">
           <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1977,16 +1511,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/filter/AuthorizationFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="42" column="7" selection-start-line="42" selection-start-column="7" selection-end-line="48" selection-end-column="118" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/rest/OAuth2Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -1997,11 +1521,291 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/user/profile/UserInformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="152" column="18" selection-start-line="152" selection-start-column="18" selection-end-line="152" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2195#2196#0" expanded="false" />
+            <element signature="e#2224#2225#0" expanded="false" />
+            <element signature="e#2272#2273#0" expanded="false" />
+            <element signature="e#2308#2309#0" expanded="false" />
+            <element signature="e#2341#2342#0" expanded="false" />
+            <element signature="e#2368#2369#0" expanded="false" />
+            <element signature="e#2410#2411#0" expanded="false" />
+            <element signature="e#2442#2443#0" expanded="false" />
+            <element signature="e#2485#2486#0" expanded="false" />
+            <element signature="e#2520#2521#0" expanded="false" />
+            <element signature="e#2580#2581#0" expanded="false" />
+            <element signature="e#2628#2629#0" expanded="false" />
+            <element signature="e#2683#2684#0" expanded="false" />
+            <element signature="e#2721#2722#0" expanded="false" />
+            <element signature="e#2796#2797#0" expanded="false" />
+            <element signature="e#2850#2851#0" expanded="false" />
+            <element signature="e#2920#2921#0" expanded="false" />
+            <element signature="e#2965#2966#0" expanded="false" />
+            <element signature="e#3208#3209#0" expanded="false" />
+            <element signature="e#3257#3258#0" expanded="false" />
+            <element signature="e#3482#3483#0" expanded="false" />
+            <element signature="e#3516#3517#0" expanded="false" />
+            <element signature="e#3572#3573#0" expanded="false" />
+            <element signature="e#3618#3619#0" expanded="false" />
+            <element signature="e#3740#3741#0" expanded="false" />
+            <element signature="e#3776#3777#0" expanded="false" />
+            <element signature="e#3826#3827#0" expanded="false" />
+            <element signature="e#3870#3871#0" expanded="false" />
+            <element signature="e#4061#4062#0" expanded="false" />
+            <element signature="e#4104#4105#0" expanded="false" />
+            <element signature="e#4178#4179#0" expanded="false" />
+            <element signature="e#4242#4243#0" expanded="false" />
+            <element signature="e#4292#4293#0" expanded="false" />
+            <element signature="e#4336#4337#0" expanded="false" />
+            <element signature="e#4530#4531#0" expanded="false" />
+            <element signature="e#4574#4575#0" expanded="false" />
+            <element signature="e#4799#4800#0" expanded="false" />
+            <element signature="e#4856#4857#0" expanded="false" />
+            <element signature="e#5119#5120#0" expanded="false" />
+            <element signature="e#5159#5160#0" expanded="false" />
+            <element signature="e#5232#5233#0" expanded="false" />
+            <element signature="e#5290#5291#0" expanded="false" />
+            <element signature="e#5344#5345#0" expanded="false" />
+            <element signature="e#5389#5390#0" expanded="false" />
+            <element signature="e#5594#5595#0" expanded="false" />
+            <element signature="e#5644#5645#0" expanded="false" />
+            <element signature="e#5857#5858#0" expanded="false" />
+            <element signature="e#5898#5899#0" expanded="false" />
+            <element signature="e#5968#5969#0" expanded="false" />
+            <element signature="e#6028#6029#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/user/profile/UserStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/credentials/exceptions/UserCredentialsNotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.23.2/jersey-server-2.23.2.jar!/org/glassfish/jersey/server/ServerRuntime.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.23.2/jersey-server-2.23.2.jar!/org/glassfish/jersey/server/ContainerFilteringStage.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/util/stream/Stream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="934" column="16" selection-start-line="934" selection-start-column="16" selection-end-line="934" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/util/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="211" column="6" selection-start-line="211" selection-start-column="6" selection-end-line="211" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/util/Optional.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="120" column="34" selection-start-line="120" selection-start-column="34" selection-end-line="120" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/util/Lazy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/filter/AuthorizationFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="68" column="62" selection-start-line="68" selection-start-column="62" selection-end-line="68" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/javax/ws/rs/javax.ws.rs-api/2.0.1/javax.ws.rs-api-2.0.1.jar!/javax/ws/rs/core/NewCookie.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/constants/AuthStatusCodes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/request/AuthenticateUserRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/request/AuthRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/response/AuthResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/response/AuthenticateUserResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/user/profile/UserInformationDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/user/profile/IUserInformationDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/response/AuthenticateAuthorizationCodeResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#714#715#0" expanded="false" />
+            <element signature="e#743#744#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/response/ValidateSessionResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#653#654#0" expanded="false" />
+            <element signature="e#682#683#0" expanded="false" />
+            <element signature="e#718#719#0" expanded="false" />
+            <element signature="e#746#747#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/request/AuthenticateAuthorizationCodeRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="e#263#264#0" expanded="false" />
+            <element signature="e#303#304#0" expanded="false" />
+            <element signature="e#373#374#0" expanded="false" />
+            <element signature="e#431#432#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2610">
+          <caret line="174" column="0" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/result/AuthenticateUserResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/rest/HealthCheckController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/AuthenticationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="99" column="48" selection-start-line="99" selection-start-column="48" selection-end-line="99" selection-end-column="48" />
+          <folding>
+            <element signature="e#4789#4790#0" expanded="true" />
+            <element signature="e#4850#4851#0" expanded="true" />
+            <element signature="e#4927#4928#0" expanded="true" />
+            <element signature="e#4989#4990#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/rest/AuthenticationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="209" column="9" selection-start-line="209" selection-start-column="9" selection-end-line="209" selection-end-column="9" />
+        <state relative-caret-position="168">
+          <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/entropyshift/overseer/auth/IAuthenticationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

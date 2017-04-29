@@ -12,8 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
+import javax.ws.rs.core.Cookie;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -35,12 +37,20 @@ public class AuthorizationFilter implements ContainerRequestFilter
     @Override
     public void filter(ContainerRequestContext containerRequestContext) throws IOException
     {
-        final Lazy<String> sessionTokenHeader = new Lazy<>(() -> containerRequestContext.getHeaders()
-                .get(propertiesProvider.getProperty(PropertyNameConstants.SESSION_COOKIE_NAME))
-                .stream().findFirst().get());
-        final Lazy<String> sessionCookie = new Lazy<>(() -> containerRequestContext.getCookies()
-                .get(propertiesProvider.getProperty(PropertyNameConstants.SESSION_COOKIE_NAME))
-                .getValue());
+        final Lazy<String> sessionTokenHeader = new Lazy<>(() ->
+        {
+           List<String> sessionCookieHeaders =  containerRequestContext.getHeaders()
+                    .get(propertiesProvider.getProperty(PropertyNameConstants.SESSION_COOKIE_NAME));
+
+            return sessionCookieHeaders == null ? null : sessionCookieHeaders.stream().findFirst().get();
+        });
+
+        final Lazy<String> sessionCookie = new Lazy<>(() -> {
+            Cookie cookie = containerRequestContext.getCookies()
+                    .get(propertiesProvider.getProperty(PropertyNameConstants.SESSION_COOKIE_NAME));
+            return  cookie == null ? null : cookie.getValue();
+
+        } );
         final String sessionToken = sessionTokenHeader.get() != null ? sessionTokenHeader.get() : sessionCookie.get();
 
         try
@@ -62,7 +72,7 @@ public class AuthorizationFilter implements ContainerRequestFilter
                 throw new InvalidSessionException();
             }
             containerRequestContext.setProperty(PropertyNameConstants.SESSION_DATA, session);
-            containerRequestContext.setProperty(PropertyNameConstants.SESSION_KEY, session);
+            containerRequestContext.setProperty(PropertyNameConstants.SESSION_KEY, sessionKey);
 
         }
         catch (Exception e)
